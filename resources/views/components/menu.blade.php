@@ -1,6 +1,6 @@
 <ul class="{{ $menu->getConfig('ul_class') }}">
 
-    @foreach ($menu->items as $item)
+    @foreach ($menu->getMenu() as $item)
         <li
             class="{{ $menu->getConfig('li_class') }} {{ Route::is($item->routeName) ? $menu->getConfig('li_active_class') : '' }}">
             <a href="{{ route($item->routeName) }}" class="{{ $menu->getConfig('a_class') }} {{ Route::is($item->routeName) ? $menu->getConfig('a_active_class') : '' }}"

@@ -28,7 +28,7 @@ class Menu
 
     public function getConfig($key)
     {
-        return $this->configs[$key];
+        return isset($this->configs[$key]) ? $this->configs[$key] : null;
     }
 
     /**

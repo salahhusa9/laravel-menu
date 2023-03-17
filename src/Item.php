@@ -7,47 +7,47 @@ class Item
     /**
      * @var string
      */
-    protected $name;
+    public $name;
 
     /**
      * @var string
      */
-    protected $routeName;
+    public $routeName;
 
     /**
      * @var string
      */
-    protected $icon;
+    public $icon;
 
     /**
      * @var string
      */
-    protected $class;
+    public $class;
 
     /**
      * @var string
      */
-    protected $id;
+    public $id;
 
     /**
      * @var string
      */
-    protected $target;
+    public $target;
 
     /**
      * @var string
      */
-    protected $badgeClass;
+    public $badgeClass;
 
     /**
      * @var string
      */
-    protected $badgeName;
+    public $badgeName;
     
     /**
      * @var array
      */
-    protected $submenu = [];
+    public $submenu = [];
 
     /**
      * Add a new item to the menu
@@ -85,6 +85,4 @@ class Item
 
         return $this;
     }
-
-    
 }

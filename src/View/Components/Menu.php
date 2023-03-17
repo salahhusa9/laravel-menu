@@ -7,11 +7,11 @@ use Salahhusa9\Menu\Facades\Menu as FacadesMenu;
 
 class Menu extends Component
 {
-    public $menu;
+    public FacadesMenu $menu;
 
     public function __construct()
     {
-        $this->menu = FacadesMenu::getMenu();
+        $this->menu = FacadesMenu::get();
     }
 
     public function render()

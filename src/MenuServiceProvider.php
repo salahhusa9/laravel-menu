@@ -21,7 +21,7 @@ class MenuServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasMigration('create_laravel-menu_table')
-            ->hasViewComponents('menu', Menu::class)
+            ->hasViewComponents('', Menu::class)
             ->hasCommand(MenuCommand::class);
     }
 }

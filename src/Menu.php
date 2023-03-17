@@ -21,6 +21,16 @@ class Menu
         $this->configs = config('menu');
     }
 
+    public function getConfigs()
+    {
+        return $this->configs;
+    }
+
+    public function getConfig($key)
+    {
+        return $this->configs[$key];
+    }
+
     /**
      * Add a new item to the menu
      * @param string $name
@@ -31,6 +41,7 @@ class Menu
      * @param string $target
      * @param string $badgeClass
      * @param string $badgeName
+     * @param array $submenu
      * @return Salahhusa9\Menu\Item
      */
     public function add(
@@ -41,10 +52,11 @@ class Menu
         $id = null,
         $target = null,
         $badgeClass = null,
-        $badgeName = null
+        $badgeName = null,
+        $submenu = []
     ) {
         $item = new Item();
-        $item->new($name, $routeName, $icon, $class, $id, $target, $badgeClass, $badgeName);
+        $item->new($name, $routeName, $icon, $class, $id, $target, $badgeClass, $badgeName, $submenu);
         $this->menu[] = $item;
         return $item;
     }
@@ -65,6 +77,11 @@ class Menu
     public function getMenu()
     {
         return $this->menu;
+    }
+
+    public function get()
+    {
+        return $this;
     }
 
     /**

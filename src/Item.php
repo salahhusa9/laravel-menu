@@ -1,6 +1,6 @@
 <?php
 
-namespace Salahhusa9\Menu\Item;
+namespace Salahhusa9\Menu;
 
 class Item
 {

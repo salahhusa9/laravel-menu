@@ -52,7 +52,7 @@ class Item
     /**
      * Add a new item to the menu
      * @param string $name
-     * @param string $url
+     * @param string $routeName
      * @param string $icon
      * @param string $class
      * @param string $id
@@ -63,7 +63,7 @@ class Item
      */
     public function new(
         $name,
-        $url,
+        $routeName,
         $icon = null,
         $class = null,
         $id = null,

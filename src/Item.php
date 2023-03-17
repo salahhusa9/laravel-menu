@@ -71,6 +71,15 @@ class Item
         $badgeClass = null,
         $badgeName = null
     ) {
+        $this->name = $name;
+        $this->routeName = $routeName;
+        $this->icon = $icon;
+        $this->class = $class;
+        $this->id = $id;
+        $this->target = $target;
+        $this->badgeClass = $badgeClass;
+        $this->badgeName = $badgeName;
+
         return $this;
     }
 }

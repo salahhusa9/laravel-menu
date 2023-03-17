@@ -2,7 +2,7 @@
 
 namespace Salahhusa9\Menu;
 
-use Salahhusa9\Item;
+use Salahhusa9\Menu\Item;
 
 /**
  * Menu: A simple menu builder for Laravel 

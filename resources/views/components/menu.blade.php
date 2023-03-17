@@ -9,9 +9,9 @@
                     <i class="{{ $item->icon }}"></i>
                 @endif
 
-                <div>{{ $item->title }}</div>
+                <div>{{ $item->name }}</div>
 
-                @if ($item->badge)
+                @if ($item->badgeName)
                     <div class="{{ $menu->getConfig('badge_class') }} {{ $item->badgeClass }}">{{ $item->badgeName }}
                     </div>
                 @endif

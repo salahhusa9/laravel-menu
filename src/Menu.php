@@ -14,7 +14,12 @@ class Menu
      */
     protected $menu = [];
 
-    protected $configs = [];
+    public $configs = [];
+
+    public function __construct()
+    {
+        $this->config();
+    }
 
     public function config()
     {

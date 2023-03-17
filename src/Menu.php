@@ -14,9 +14,11 @@ class Menu
      */
     protected $menu = [];
 
+    protected $configs = [];
+
     public function config()
     {
-        
+        $this->configs = config('menu');
     }
 
     /**
@@ -72,18 +74,5 @@ class Menu
     public function getMenuAsJson()
     {
         return json_encode($this->menu);
-    }
-
-    /**
-     * Get the menu as HTML
-     * @return string
-     */
-    public function getMenuAsHtml()
-    {
-        $html = '';
-        foreach ($this->menu as $item) {
-            $html .= $item->render();
-        }
-        return $html;
     }
 }

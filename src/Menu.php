@@ -46,7 +46,6 @@ class Menu
      * @param string $target
      * @param string $badgeClass
      * @param string $badgeName
-     * @param array $submenu
      * @return Salahhusa9\Menu\Item
      */
     public function add(
@@ -58,10 +57,9 @@ class Menu
         $target = null,
         $badgeClass = null,
         $badgeName = null,
-        $submenu = []
     ) {
         $item = new Item();
-        $item->new($name, $routeName, $icon, $class, $id, $target, $badgeClass, $badgeName, $submenu);
+        $item->new($name, $routeName, $icon, $class, $id, $target, $badgeClass, $badgeName);
         $this->menu[] = $item;
         return $item;
     }

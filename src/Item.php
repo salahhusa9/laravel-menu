@@ -43,7 +43,7 @@ class Item
      * @var string
      */
     public $badgeName;
-    
+
     /**
      * @var array
      */
@@ -59,7 +59,6 @@ class Item
      * @param string $target
      * @param string $badgeClass
      * @param string $badgeName
-     * @param array $submenu
      * @return Salahhusa9\Menu\Item
      */
     public function new(
@@ -71,7 +70,6 @@ class Item
         $target = null,
         $badgeClass = null,
         $badgeName = null,
-        $submenu = []
     ) {
         $this->name = $name;
         $this->routeName = $routeName;
@@ -81,8 +79,16 @@ class Item
         $this->target = $target;
         $this->badgeClass = $badgeClass;
         $this->badgeName = $badgeName;
-        $this->submenu = $submenu;
 
+        return $this;
+    }
+
+    // add submenu items
+    public function addSubmenu($name, $routeName, $icon = null, $class = null, $id = null, $target = null, $badgeClass = null, $badgeName = null)
+    {
+        $item = new Item();
+        $item->new($name, $routeName, $icon, $class, $id, $target, $badgeClass, $badgeName);
+        $this->submenu[] = $item;
         return $this;
     }
 }

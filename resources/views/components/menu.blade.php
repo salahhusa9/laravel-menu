@@ -3,7 +3,7 @@
     @foreach ($menu->getMenu() as $item)
         <li
             class="{{ $menu->getConfig('li_class') }} {{ Route::is($item->routeName) ? $menu->getConfig('li_active_class') : '' }}">
-            <a href="{{ route($item->routeName) }}" class="{{ $menu->getConfig('a_class') }} {{ Route::is($item->routeName) ? $menu->getConfig('a_active_class') : '' }}"
+            <a href="{{ route($item->routeName) }}" class="{{ $menu->isSubmenu() ? $menu->getConfig('a_sub_menu_class') : $menu->getConfig('a_class') }} {{ Route::is($item->routeName) ? $menu->getConfig('a_active_class') : '' }}"
                 @if ($item->target) target="{{ $item->target }}" @endif>
                 @if ($item->icon)
                     <i class="{{ $menu->getConfig('icon_class') }}{{ $item->icon }}"></i>

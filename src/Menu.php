@@ -16,6 +16,8 @@ class Menu
 
     public $configs = [];
 
+    protected $isSubmenu = false;
+
     public function __construct()
     {
         $this->config();
@@ -44,6 +46,16 @@ class Menu
     public function getConfig($key)
     {
         return isset($this->configs[$key]) ? $this->configs[$key] : null;
+    }
+
+    public function isSubmenu()
+    {
+        return $this->isSubmenu;
+    }
+
+    public function setIsSubmenu($isSubmenu = true)
+    {
+        $this->isSubmenu = $isSubmenu;
     }
 
     /**

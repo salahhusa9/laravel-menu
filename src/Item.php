@@ -96,6 +96,7 @@ class Item
     public function getSubmenu()
     {
         $menu = new Menu();
+        $menu->setIsSubmenu();
         $menu->setMenu($this->submenu);
         $menu->setConfig('ul_class', 'menu-sub');
         return $menu;

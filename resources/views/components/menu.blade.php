@@ -7,9 +7,9 @@
                 {{ $item->addLiActiveClassIfActive() }}
                 {{ $item->addLiOpenClassIfHaveActiveSubmenu() }}
             ">
-            <a href="{{ $item->getUrl() }}"
-                class="{{ $item->getAClass() }} {{ $item->addAClassIfActive() }}"
+            <a href="{{ $item->getUrl() }}" class="{{ $item->getAClass() }} {{ $item->addAClassIfActive() }}"
                 @if ($item->target) target="{{ $item->target }}" @endif>
+
                 @if ($item->icon)
                     <i class="{{ $menu->getConfig('icon_class') }} {{ $item->icon }}"></i>
                 @endif

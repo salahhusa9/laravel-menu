@@ -38,25 +38,16 @@ class Menu
         $this->configs[$key] = $value;
     }
 
-    public function getConfigs()
-    {
-        return $this->configs;
-    }
-
-    public function getConfig($key)
-    {
-        return isset($this->configs[$key]) ? $this->configs[$key] : null;
-    }
-
-    public function isSubmenu()
-    {
-        return $this->isSubmenu;
-    }
-
     public function setIsSubmenu($isSubmenu = true)
     {
         $this->isSubmenu = $isSubmenu;
     }
+
+    public function setMenu($menu)
+    {
+        $this->menu = $menu;
+    }
+
 
     /**
      * Add a new item to the menu
@@ -87,26 +78,12 @@ class Menu
     }
 
     /**
-     * Render the menu
-     * @return string
-     */
-    public function render()
-    {
-        return view('menu::menu', ['menu' => $this->menu, 'configs' => $this->configs])->render();
-    }
-
-    /**
      * Get the menu
      * @return array
      */
     public function getMenu()
     {
         return $this->menu;
-    }
-
-    public function setMenu($menu)
-    {
-        $this->menu = $menu;
     }
 
     public function get()
@@ -131,5 +108,29 @@ class Menu
     public function getMenuAsJson()
     {
         return json_encode($this->menu);
+    }
+
+    public function getConfigs()
+    {
+        return $this->configs;
+    }
+
+    public function getConfig($key)
+    {
+        return isset($this->configs[$key]) ? $this->configs[$key] : null;
+    }
+
+    public function isSubmenu()
+    {
+        return $this->isSubmenu;
+    }
+
+    /**
+     * Render the menu
+     * @return string
+     */
+    public function render()
+    {
+        return view('menu::components.menu', ['menu' => $this->menu])->render();
     }
 }

@@ -86,7 +86,6 @@ class Item
         return $this;
     }
 
-    // add submenu items
     public function addSubmenu($name, $routeName, $icon = null, $class = null, $id = null, $target = null, $badgeClass = null, $badgeName = null)
     {
         $item = new Item();
@@ -95,25 +94,12 @@ class Item
         return $this;
     }
 
-    // get submenu items not array, as menu class
-    public function getSubmenu()
+    public function addAClassIfActive()
     {
-        $menu = new Menu();
-        $menu->setIsSubmenu();
-        $menu->setMenu($this->submenu);
-        return $menu;
-    }
-
-    // check if the item has submenu
-    public function hasSubmenu()
-    {
-        return count($this->submenu) > 0;
-    }
-
-    // check if the item is active
-    public function isActive()
-    {
-        return request()->routeIs($this->routeName);
+        if ($this->isActive()) {
+            return FacadesMenu::getConfig('a_active_class');
+        }
+        return '';
     }
 
     public function addLiActiveClassIfActive()
@@ -124,7 +110,19 @@ class Item
         return '';
     }
 
-    // check if has active submenu
+    public function addLiOpenClassIfHaveActiveSubmenu()
+    {
+        if ($this->hasActiveSubmenu()) {
+            return FacadesMenu::getConfig('li_sub_menu_open_class');
+        }
+        return '';
+    }
+
+    public function hasSubmenu()
+    {
+        return count($this->submenu) > 0;
+    }
+
     public function hasActiveSubmenu()
     {
         foreach ($this->submenu as $item) {
@@ -135,15 +133,11 @@ class Item
         return false;
     }
 
-    public function addLiOpenClassIfHaveActiveSubmenu()
+    public function isActive()
     {
-        if ($this->hasActiveSubmenu()) {
-            return FacadesMenu::getConfig('li_sub_menu_open_class');
-        }
-        return '';
+        return request()->routeIs($this->routeName);
     }
 
-    // check if the item is active or has active submenu
     public function isActiveOrHasActiveSubmenu()
     {
         return $this->isActive() || $this->hasActiveSubmenu();
@@ -163,11 +157,11 @@ class Item
         return $this->hasSubmenu() ? FacadesMenu::getConfig('a_sub_menu_class') : FacadesMenu::getConfig('a_class');
     }
 
-    public function addAClassIfActive()
+    public function getSubmenu()
     {
-        if ($this->isActive()) {
-            return FacadesMenu::getConfig('a_active_class');
-        }
-        return '';
+        $menu = new Menu();
+        $menu->setIsSubmenu();
+        $menu->setMenu($this->submenu);
+        return $menu;
     }
 }

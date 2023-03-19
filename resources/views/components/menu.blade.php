@@ -3,7 +3,7 @@
     @foreach ($menu->getMenu() as $item)
         <li
             class="
-                {{ $menu->isSubmenu() ? $menu->getConfig('li_sub_menu_class') : $menu->getConfig('li_class') }} 
+                {{ $menu->getLiClass() }} 
                 {{ Route::is($item->routeName) ? $menu->getConfig('li_active_class') : '' }}
                 {{ $item->hasActiveSubmenu() ? $menu->getConfig('li_sub_menu_open_class') : '' }}
             ">

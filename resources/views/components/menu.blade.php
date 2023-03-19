@@ -1,4 +1,4 @@
-<ul class="{{ $menu->isSubmenu() ? $menu->getConfig('ul_sub_menu_class') : $menu->getConfig('ul_class') }}">
+<ul class="{{ $menu->getUlClass() }}">
 
     @foreach ($menu->getMenu() as $item)
         <li

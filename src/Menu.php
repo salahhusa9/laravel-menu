@@ -114,6 +114,11 @@ class Menu
         return $this;
     }
 
+    public function getUlClass()
+    {
+        return $this->isSubmenu() ? $this->getConfig('ul_sub_menu_class') : $this->getConfig('ul_class');
+    }
+
     /**
      * Get the menu as JSON
      * @return string

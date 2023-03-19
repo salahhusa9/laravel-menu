@@ -157,4 +157,17 @@ class Item
 
         return route($this->routeName);
     }
+
+    public function getAClass()
+    {
+        return $this->hasSubmenu() ? FacadesMenu::getConfig('a_sub_menu_class') : FacadesMenu::getConfig('a_class');
+    }
+
+    public function addAClassIfActive()
+    {
+        if ($this->isActive()) {
+            return FacadesMenu::getConfig('a_active_class');
+        }
+        return '';
+    }
 }

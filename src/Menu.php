@@ -16,7 +16,7 @@ class Menu
 
     public $configs = [];
 
-    protected $isSubmenu = false;
+    protected $isSubmenu = false; // this is used to determine if the menu is a submenu or not
 
     public function __construct()
     {

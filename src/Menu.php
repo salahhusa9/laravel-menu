@@ -72,7 +72,7 @@ class Menu
      */
     public function add(
         $name,
-        $routeName,
+        $routeName = null,
         $icon = null,
         $class = null,
         $id = null,

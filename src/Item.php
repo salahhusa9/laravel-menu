@@ -2,7 +2,8 @@
 
 namespace Salahhusa9\Menu;
 
-use Salahhusa9\Menu\Facades\Menu;
+use Salahhusa9\Menu\Facades\Menu as FacadesMenu;
+use Salahhusa9\Menu\Menu;
 
 class Item
 {
@@ -65,7 +66,7 @@ class Item
      */
     public function new(
         $name,
-        $routeName,
+        $routeName = null,
         $icon = null,
         $class = null,
         $id = null,
@@ -118,7 +119,7 @@ class Item
     public function addLiActiveClassIfActive()
     {
         if ($this->isActive()) {
-            return Menu::getConfig('li_active_class');
+            return FacadesMenu::getConfig('li_active_class');
         }
         return '';
     }
@@ -137,7 +138,7 @@ class Item
     public function addLiOpenClassIfHaveActiveSubmenu()
     {
         if ($this->hasActiveSubmenu()) {
-            return Menu::getConfig('li_sub_menu_open_class');
+            return FacadesMenu::getConfig('li_sub_menu_open_class');
         }
         return '';
     }
@@ -146,5 +147,14 @@ class Item
     public function isActiveOrHasActiveSubmenu()
     {
         return $this->isActive() || $this->hasActiveSubmenu();
+    }
+
+    public function getUrl()
+    {
+        if (is_null($this->routeName)) {
+            return 'javascript:void(0)';
+        }
+
+        return route($this->routeName);
     }
 }

@@ -7,7 +7,7 @@
                 {{ $item->addLiActiveClassIfActive() }}
                 {{ $item->addLiOpenClassIfHaveActiveSubmenu() }}
             ">
-            <a href="{{ route($item->routeName) }}"
+            <a href="{{ $item->getUrl() }}"
                 class="{{ $item->hasSubmenu() ? $menu->getConfig('a_sub_menu_class') : $menu->getConfig('a_class') }} {{ Route::is($item->routeName) ? $menu->getConfig('a_active_class') : '' }}"
                 @if ($item->target) target="{{ $item->target }}" @endif>
                 @if ($item->icon)

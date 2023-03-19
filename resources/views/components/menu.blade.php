@@ -5,7 +5,7 @@
             class="
                 {{ $menu->isSubmenu() ? $menu->getConfig('li_sub_menu_class') : $menu->getConfig('li_class') }} 
                 {{ Route::is($item->routeName) ? $menu->getConfig('li_active_class') : '' }}
-                {{ $menu->hasActiveSubmenu() ? $menu->getConfig('li_has_submenu_active_class') : '' }}
+                {{ $menu->hasActiveSubmenu() ? $menu->getConfig('li_sub_menu_open_class') : '' }}
             ">
             <a href="{{ route($item->routeName) }}"
                 class="{{ $menu->isSubmenu() ? $menu->getConfig('a_sub_menu_class') : $menu->getConfig('a_class') }} {{ Route::is($item->routeName) ? $menu->getConfig('a_active_class') : '' }}"

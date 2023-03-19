@@ -31,6 +31,11 @@ class Menu
         $this->configs = $configs;
     }
 
+    public function setConfig($key, $value)
+    {
+        $this->configs[$key] = $value;
+    }
+
     public function getConfigs()
     {
         return $this->configs;

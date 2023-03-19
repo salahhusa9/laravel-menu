@@ -14,40 +14,83 @@ class Menu
      */
     protected $menu = [];
 
+    /**
+     * configs
+     *
+     * @var array
+     */
     public $configs = [];
 
-    protected $isSubmenu = false; // this is used to determine if the menu is a submenu or not
+    /**
+     * isSubmenu: this is used to determine if the menu is a submenu or not
+     *
+     * @var bool
+     */
+    protected bool $isSubmenu = false;
 
     public function __construct()
     {
         $this->config();
     }
 
+    /**
+     * config
+     *
+     * @return void
+     */
     public function config()
     {
         $this->configs = config('menu');
     }
 
-    public function setConfigs($configs)
+    /**
+     * setConfigs
+     *
+     * @param  array $configs
+     * @return Menu
+     */
+    public function setConfigs(array $configs = [])
     {
         $this->configs = $configs;
+        return $this;
     }
 
+    /**
+     * setConfig
+     *
+     * @param  mixed $key
+     * @param  mixed $value
+     * @return Menu
+     */
     public function setConfig($key, $value)
     {
         $this->configs[$key] = $value;
+        return $this;
     }
 
-    public function setIsSubmenu($isSubmenu = true)
+    /**
+     * setIsSubmenu
+     *
+     * @param  bool $isSubmenu
+     * @return Menu
+     */
+    public function setIsSubmenu(bool $isSubmenu = true)
     {
         $this->isSubmenu = $isSubmenu;
+        return $this;
     }
 
-    public function setMenu($menu)
+    /**
+     * setMenu
+     *
+     * @param  array $menu
+     * @return Menu
+     */
+    public function setMenu(array $menu)
     {
         $this->menu = $menu;
+        return $this;
     }
-
 
     /**
      * Add a new item to the menu
@@ -86,19 +129,64 @@ class Menu
         return $this->menu;
     }
 
+    /**
+     * Get the menu
+     * @return Menu
+     */
     public function get()
     {
         return $this;
     }
 
+    /**
+     * getUlClass
+     *
+     * @return string
+     */
     public function getUlClass()
     {
         return $this->isSubmenu() ? $this->getConfig('ul_sub_menu_class') : $this->getConfig('ul_class');
     }
 
+    /**
+     * getLiClass
+     *
+     * @return string
+     */
     public function getLiClass()
     {
         return $this->isSubmenu() ? $this->getConfig('li_sub_menu_class') : $this->getConfig('li_class');
+    }
+
+    /**
+     * getConfigs
+     *
+     * @return array
+     */
+    public function getConfigs()
+    {
+        return $this->configs;
+    }
+
+    /**
+     * getConfig
+     *
+     * @param  mixed $key
+     * @return void
+     */
+    public function getConfig($key)
+    {
+        return isset($this->configs[$key]) ? $this->configs[$key] : null;
+    }
+
+    /**
+     * isSubmenu
+     *
+     * @return void
+     */
+    public function isSubmenu()
+    {
+        return $this->isSubmenu;
     }
 
     /**
@@ -110,21 +198,6 @@ class Menu
         return json_encode($this->menu);
     }
 
-    public function getConfigs()
-    {
-        return $this->configs;
-    }
-
-    public function getConfig($key)
-    {
-        return isset($this->configs[$key]) ? $this->configs[$key] : null;
-    }
-
-    public function isSubmenu()
-    {
-        return $this->isSubmenu;
-    }
-
     /**
      * Render the menu
      * @return string
@@ -132,5 +205,33 @@ class Menu
     public function render()
     {
         return view('menu::components.menu', ['menu' => $this->menu])->render();
+    }
+
+    /**
+     * Render the menu as JSON
+     * @return string
+     */
+    public function renderAsJson()
+    {
+        return $this->getMenuAsJson();
+    }
+
+    /**
+     * Render the menu as JSON
+     * @return string
+     */
+    public function renderAsHtml()
+    {
+        return $this->render();
+    }
+
+    /**
+     * __toString
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->render();
     }
 }

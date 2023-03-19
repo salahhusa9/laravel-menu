@@ -13,7 +13,7 @@ class Item
     public $name;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $routeName;
 
@@ -85,7 +85,20 @@ class Item
 
         return $this;
     }
-
+    
+    /**
+     * addSubmenu
+     *
+     * @param  mixed $name
+     * @param  mixed $routeName
+     * @param  mixed $icon
+     * @param  mixed $class
+     * @param  mixed $id
+     * @param  mixed $target
+     * @param  mixed $badgeClass
+     * @param  mixed $badgeName
+     * @return Item
+     */
     public function addSubmenu($name, $routeName, $icon = null, $class = null, $id = null, $target = null, $badgeClass = null, $badgeName = null)
     {
         $item = new Item();
@@ -93,7 +106,12 @@ class Item
         $this->submenu[] = $item;
         return $this;
     }
-
+    
+    /**
+     * addAClassIfActive
+     *
+     * @return string
+     */
     public function addAClassIfActive()
     {
         if ($this->isActive()) {
@@ -102,6 +120,11 @@ class Item
         return '';
     }
 
+    /**
+     * addLiActiveClassIfActive
+     *
+     * @return string
+     */
     public function addLiActiveClassIfActive()
     {
         if ($this->isActive()) {
@@ -110,6 +133,11 @@ class Item
         return '';
     }
 
+    /**
+     * addLiOpenClassIfHaveActiveSubmenu
+     *
+     * @return string
+     */
     public function addLiOpenClassIfHaveActiveSubmenu()
     {
         if ($this->hasActiveSubmenu()) {
@@ -118,11 +146,21 @@ class Item
         return '';
     }
 
+    /**
+     * addLiClassIfHasSubmenu
+     *
+     * @return bool
+     */
     public function hasSubmenu()
     {
         return count($this->submenu) > 0;
     }
 
+    /**
+     * addLiClassIfHasSubmenu
+     *
+     * @return bool
+     */
     public function hasActiveSubmenu()
     {
         foreach ($this->submenu as $item) {
@@ -133,16 +171,31 @@ class Item
         return false;
     }
 
+    /**
+     * addLiClassIfHasSubmenu
+     *
+     * @return bool
+     */
     public function isActive()
     {
         return request()->routeIs($this->routeName);
     }
 
+    /**
+     * addLiClassIfHasSubmenu
+     *
+     * @return bool
+     */
     public function isActiveOrHasActiveSubmenu()
     {
         return $this->isActive() || $this->hasActiveSubmenu();
     }
 
+    /**
+     * addLiClassIfHasSubmenu
+     *
+     * @return string|null
+     */
     public function getUrl()
     {
         if (is_null($this->routeName)) {
@@ -152,11 +205,21 @@ class Item
         return route($this->routeName);
     }
 
+    /**
+     * addLiClassIfHasSubmenu
+     *
+     * @return string
+     */
     public function getAClass()
     {
         return $this->hasSubmenu() ? FacadesMenu::getConfig('a_sub_menu_class') : FacadesMenu::getConfig('a_class');
     }
 
+    /**
+     * addLiClassIfHasSubmenu
+     *
+     * @return Menu
+     */
     public function getSubmenu()
     {
         $menu = new Menu();

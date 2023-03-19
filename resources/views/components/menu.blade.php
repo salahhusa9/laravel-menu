@@ -16,6 +16,10 @@
                     </div>
                 @endif
             </a>
+
+            @if ($item->hasSubmenu())
+                @include('components.menu', ['menu' => $item->getSubmenu()])
+            @endif
         </li>
     @endforeach
 

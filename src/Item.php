@@ -91,4 +91,16 @@ class Item
         $this->submenu[] = $item;
         return $this;
     }
+
+    // get submenu items
+    public function getSubmenu()
+    {
+        return $this->submenu;
+    }
+
+    // check if the item has submenu
+    public function hasSubmenu()
+    {
+        return count($this->submenu) > 0;
+    }
 }

@@ -92,7 +92,7 @@ class Menu
      */
     public function render()
     {
-        
+        return view('menu::menu', ['menu' => $this->menu, 'configs' => $this->configs])->render();
     }
 
     /**

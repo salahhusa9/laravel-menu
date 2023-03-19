@@ -58,17 +58,6 @@ class Menu
         $this->isSubmenu = $isSubmenu;
     }
 
-    // check if has active submenu
-    public function hasActiveSubmenu()
-    {
-        foreach ($this->menu as $item) {
-            if ($item->routeName == request()->route()->getName()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     /**
      * Add a new item to the menu
      * @param string $name

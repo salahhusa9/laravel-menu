@@ -106,4 +106,27 @@ class Item
     {
         return count($this->submenu) > 0;
     }
+
+    // check if the item is active
+    public function isActive()
+    {
+        return request()->routeIs($this->routeName);
+    }
+
+    // check if has active submenu
+    public function hasActiveSubmenu()
+    {
+        foreach ($this->submenu as $item) {
+            if ($item->isActive()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // check if the item is active or has active submenu
+    public function isActiveOrHasActiveSubmenu()
+    {
+        return $this->isActive() || $this->hasActiveSubmenu();
+    }
 }

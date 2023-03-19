@@ -2,6 +2,8 @@
 
 namespace Salahhusa9\Menu;
 
+use Salahhusa9\Menu\Facades\Menu;
+
 class Item
 {
     /**
@@ -113,6 +115,14 @@ class Item
         return request()->routeIs($this->routeName);
     }
 
+    public function addLiActiveClassIfActive()
+    {
+        if ($this->isActive()) {
+            return Menu::getConfig('li_active_class');
+        }
+        return '';
+    }
+
     // check if has active submenu
     public function hasActiveSubmenu()
     {
@@ -122,6 +132,14 @@ class Item
             }
         }
         return false;
+    }
+
+    public function addLiOpenClassIfHaveActiveSubmenu()
+    {
+        if ($this->hasActiveSubmenu()) {
+            return Menu::getConfig('li_sub_menu_open_class');
+        }
+        return '';
     }
 
     // check if the item is active or has active submenu

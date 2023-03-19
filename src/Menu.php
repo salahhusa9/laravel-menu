@@ -95,14 +95,14 @@ class Menu
     /**
      * Add a new item to the menu
      * @param string $name
-     * @param string $url
+     * @param string $routeName
      * @param string $icon
      * @param string $class
      * @param string $id
      * @param string $target
      * @param string $badgeClass
      * @param string $badgeName
-     * @return Salahhusa9\Menu\Item
+     * @return \Salahhusa9\Menu\Item
      */
     public function add(
         $name,
@@ -141,7 +141,7 @@ class Menu
     /**
      * getUlClass
      *
-     * @return string
+     * @return string|null
      */
     public function getUlClass()
     {
@@ -151,7 +151,7 @@ class Menu
     /**
      * getLiClass
      *
-     * @return string
+     * @return string|null
      */
     public function getLiClass()
     {
@@ -172,7 +172,7 @@ class Menu
      * getConfig
      *
      * @param  mixed $key
-     * @return void
+     * @return string|null
      */
     public function getConfig($key)
     {
@@ -182,7 +182,7 @@ class Menu
     /**
      * isSubmenu
      *
-     * @return void
+     * @return bool
      */
     public function isSubmenu()
     {

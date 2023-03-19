@@ -62,7 +62,7 @@ class Item
      * @param string $target
      * @param string $badgeClass
      * @param string $badgeName
-     * @return Salahhusa9\Menu\Item
+     * @return Item
      */
     public function new(
         $name,

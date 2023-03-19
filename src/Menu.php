@@ -26,6 +26,11 @@ class Menu
         $this->configs = config('menu');
     }
 
+    public function setConfigs($configs)
+    {
+        $this->configs = $configs;
+    }
+
     public function getConfigs()
     {
         return $this->configs;
@@ -80,6 +85,11 @@ class Menu
     public function getMenu()
     {
         return $this->menu;
+    }
+
+    public function setMenu($menu)
+    {
+        $this->menu = $menu;
     }
 
     public function get()

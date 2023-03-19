@@ -5,6 +5,7 @@ return [
     "ul_class" => "menu-inner py-1",
     "li_class" => "menu-item",
     "a_class" => "menu-link",
+    "icon_class" => "menu-icon",
 
     "li_active_class" => "active",
     "a_active_class" => "active",

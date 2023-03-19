@@ -92,10 +92,12 @@ class Item
         return $this;
     }
 
-    // get submenu items
+    // get submenu items not array, as menu class
     public function getSubmenu()
     {
-        return $this->submenu;
+        $menu = new Menu();
+        $menu->setMenu($this->submenu);
+        return $menu;
     }
 
     // check if the item has submenu

@@ -151,9 +151,9 @@ addSubmenu(
 There is other functions that you can used :
 
 ```php
-Menu::getMenuAsJson() // return the menu as json
-Menu::renderAsJson() // return the menu as json
-Menu::renderAsHtml() // return the menu as html
+Menu::getMenuAsJson(); // return the menu as json
+Menu::renderAsJson(); // return the menu as json
+Menu::renderAsHtml(); // return the menu as html
 ```
 
 ## Roadmap

@@ -205,7 +205,17 @@ class Item
      */
     public function getAClass()
     {
-        return $this->hasSubmenu() ? FacadesMenu::getConfig('a_sub_menu_class') : FacadesMenu::getConfig('a_class');
+        return ($this->hasSubmenu() ? FacadesMenu::getConfig('a_sub_menu_class') : FacadesMenu::getConfig('a_class')) . ' ' . $this->getClass();
+    }
+
+    /**
+     * getClass
+     *
+     * @return string
+     */
+    public function getClass()
+    {
+        return $this->class;
     }
 
     /**

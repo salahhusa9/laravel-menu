@@ -90,7 +90,7 @@ You can customize the menu view by publishing the views using
 php artisan vendor:publish --tag="menu-views"
 ```
 
-## Configuration
+## Configuration of the defult menu Classes of Ul and Li and the active class
 
 You can publish the config file with:
 

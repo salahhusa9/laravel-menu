@@ -89,7 +89,7 @@ class Item
     /**
      * addSubmenu - add a submenu to the menu
      *
-     * @param  callback $callback
+     * @param $callback
      * @return Item
      */
     public function addSubmenu($callback)

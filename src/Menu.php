@@ -102,7 +102,7 @@ class Menu
      * @param string $target
      * @param string $badgeClass
      * @param string $badgeName
-     * @return \Salahhusa9\Menu\Item
+     * @return \Salahhusa9\Menu\Menu
      */
     public function add(
         $name,
@@ -124,14 +124,14 @@ class Menu
      * addSubmenu - add a submenu to the menu
      *
      * @param string $name
-     * @param callback $callback
+     * @param $callback
      * @param string $icon
      * @param string $class
      * @param string $id
      * @param string $target
      * @param string $badgeClass
      * @param string $badgeName
-     * @return void
+     * @return \Salahhusa9\Menu\Menu
      */
     public function addSubmenu($name, $callback, $icon = null, $class = null, $id = null, $target = null, $badgeClass = null, $badgeName = null)
     {

@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\Facade;
  */
 class Menu extends Facade
 {
+    /**
+ * @see \Salahhusa9\Menu\Menu
+ */
+
+    /**
+     * Get the registered name of the component.
+     *
+     * @return string
+     */
     protected static function getFacadeAccessor()
     {
         return \Salahhusa9\Menu\Menu::class;

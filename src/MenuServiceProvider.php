@@ -5,6 +5,7 @@ namespace Salahhusa9\Menu;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Salahhusa9\Menu\Commands\MenuCommand;
+use Salahhusa9\Menu\View\Components\Menu;
 
 class MenuServiceProvider extends PackageServiceProvider
 {
@@ -19,7 +20,6 @@ class MenuServiceProvider extends PackageServiceProvider
             ->name('laravel-menu')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_laravel-menu_table')
-            ->hasCommand(MenuCommand::class);
+            ->hasViewComponents('', Menu::class);
     }
 }

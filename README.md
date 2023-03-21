@@ -28,20 +28,102 @@ php artisan vendor:publish --tag="menu-views"
 ```
 
 ## Usage
+
 ### Basic
+
 Add items to the menu using the add() method. You can chain multiple add() calls to add multiple items.
+
 ```php
 Menu::add('test')
     ->add('test2');
 ```
+
 To create a submenu, call addSubmenu() on a menu item and add items to the submenu using the add() method.
+
 ```php
 Menu::add('test')
-        ->add('test2')
-        ->addSubmenu('test3', function ($submenu) {
-            $submenu->add('test4');
-        })
-        ->add('test5');
+    ->add('test2')
+    ->addSubmenu('test3', function ($submenu) {
+        $submenu->add('test4');
+    })
+    ->add('test5');
+```
+
+### Blade
+
+To render the menu, use the `<x-menu />` blade component.
+
+```html
+<x-menu />
+```
+
+### Customization of the menu
+Icons can be added to the menu items by passing the icon parameter to the add() method.
+
+```php
+Menu::add('test', 'route.name', 'fa fa-home');
+```
+
+You can also add a id and class to the menu item by passing the id and class parameters to the add() method.
+
+```php
+Menu::add('test', 'route.name', 'fa fa-home', 'class', 'id');
+```
+
+You can also add a target to the menu item by passing the target parameter to the add() method.
+
+```php
+Menu::add('test', 'route.name', 'fa fa-home', 'class', 'id', '_blank');
+```
+
+You can also add a badge to the menu item by passing the badgeClass and badgeName parameters to the add() method.
+
+```php
+Menu::add('test', 'route.name', 'fa fa-home', 'class', 'id', '_blank', 'badge badge-success', 'New');
+```
+
+### Customization of the menu view
+
+You can customize the menu view by publishing the views using
+
+```bash
+php artisan vendor:publish --tag="menu-views"
+```
+
+### Advanced
+
+Each Item accept this parames :
+
+```php
+add(
+     string $name,
+     string $routeName,
+     string $icon,
+     string $class,
+     string $id,
+     string $target,
+     string $badgeClass,
+     string $badgeName
+     )
+
+addSubmenu(
+     string $name,
+     callback $callbackOfSubmenu,
+     string $icon,
+     string $class,
+     string $id,
+     string $target,
+     string $badgeClass,
+     string $badgeName
+     )
+```
+
+## Configuration
+
+You can publish the config file with:
+
+```bash
+php artisan vendor:publish --tag="menu-config"
 ```
 
 ## Testing
@@ -64,8 +146,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [salahhusa9](https://github.com/salahhusa9)
-- [All Contributors](../../contributors)
+-   [salahhusa9](https://github.com/salahhusa9)
+-   [All Contributors](../../contributors)
 
 ## License
 

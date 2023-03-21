@@ -85,7 +85,7 @@ class Item
 
         return $this;
     }
-    
+
     /**
      * addSubmenu
      *
@@ -99,14 +99,22 @@ class Item
      * @param  mixed $badgeName
      * @return Item
      */
-    public function addSubmenu($name, $routeName, $icon = null, $class = null, $id = null, $target = null, $badgeClass = null, $badgeName = null)
+    // public function addSubmenu($name, $routeName, $icon = null, $class = null, $id = null, $target = null, $badgeClass = null, $badgeName = null)
+    // {
+    //     $item = new Item();
+    //     $item->new($name, $routeName, $icon, $class, $id, $target, $badgeClass, $badgeName);
+    //     $this->submenu[] = $item;
+    //     return $this;
+    // }
+
+    public function addSubmenu($callback)
     {
-        $item = new Item();
-        $item->new($name, $routeName, $icon, $class, $id, $target, $badgeClass, $badgeName);
-        $this->submenu[] = $item;
+        $menu = new Menu();
+        $callback($menu);
+        $this->submenu = $menu->getMenu();
         return $this;
     }
-    
+
     /**
      * addAClassIfActive
      *

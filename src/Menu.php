@@ -117,7 +117,18 @@ class Menu
         $item = new Item();
         $item->new($name, $routeName, $icon, $class, $id, $target, $badgeClass, $badgeName);
         $this->menu[] = $item;
-        return $item;
+        return $this;
+    }
+
+    public function addSubmenu($name, $callback)
+    {
+        $item = new Item();
+        $item->new($name);
+
+        $item->addSubmenu($callback);
+        $this->menu[] = $item;
+
+        return $this;
     }
 
     /**

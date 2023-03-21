@@ -31,6 +31,17 @@ php artisan vendor:publish --tag="menu-views"
 
 ### Basic
 
+You can create menu in your application in any place you want, but the best place is in the AppServiceProvider.php file in the boot() method.
+
+```php
+use SalahHusa9\Menu\Facades\Menu;
+
+public function boot()
+{
+    Menu::add('test', 'route.name', 'fa fa-home');
+}
+```
+
 Add items to the menu using the add() method. You can chain multiple add() calls to add multiple items.
 
 ```php

@@ -20,7 +20,6 @@ class MenuServiceProvider extends PackageServiceProvider
             ->name('laravel-menu')
             ->hasConfigFile()
             ->hasViews()
-            ->hasViewComponents('', Menu::class)
-            ->hasCommand(MenuCommand::class);
+            ->hasViewComponents('', Menu::class);
     }
 }

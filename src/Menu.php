@@ -227,7 +227,7 @@ class Menu
      */
     public function render()
     {
-        return view('menu::components.menu', ['menu' => $this->menu])->render();
+        return view('menu::components.menu', ['menu' => $this])->render();
     }
 
     /**

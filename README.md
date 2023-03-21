@@ -90,7 +90,15 @@ You can customize the menu view by publishing the views using
 php artisan vendor:publish --tag="menu-views"
 ```
 
-### Advanced
+## Configuration
+
+You can publish the config file with:
+
+```bash
+php artisan vendor:publish --tag="menu-config"
+```
+
+## Advanced
 
 Each Item accept this parames :
 
@@ -117,14 +125,18 @@ addSubmenu(
      string $badgeName
      )
 ```
+There is other functions that you can used :
 
-## Configuration
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="menu-config"
+```php
+Menu::getMenuAsJson() // return the menu as json
+Menu::renderAsJson() // return the menu as json
+Menu::renderAsHtml() // return the menu as html
 ```
+
+## Roadmap
+
+See the [open issues](../../issues) for a list of proposed features (and known issues).
+
 
 ## Testing
 

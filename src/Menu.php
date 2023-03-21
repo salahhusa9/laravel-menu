@@ -119,12 +119,24 @@ class Menu
         $this->menu[] = $item;
         return $this;
     }
-
-    public function addSubmenu($name, $callback)
+    
+    /**
+     * addSubmenu - add a submenu to the menu
+     *
+     * @param string $name
+     * @param callback $callback
+     * @param string $icon
+     * @param string $class
+     * @param string $id
+     * @param string $target
+     * @param string $badgeClass
+     * @param string $badgeName
+     * @return void
+     */
+    public function addSubmenu($name, $callback, $icon, $class, $id, $target, $badgeClass, $badgeName)
     {
         $item = new Item();
-        $item->new($name);
-
+        $item->new($name, 'javascript:void(0)', $icon, $class, $id, $target, $badgeClass, $badgeName);
         $item->addSubmenu($callback);
         $this->menu[] = $item;
 

@@ -133,7 +133,7 @@ class Menu
      * @param string $badgeName
      * @return void
      */
-    public function addSubmenu($name, $callback, $icon, $class, $id, $target, $badgeClass, $badgeName)
+    public function addSubmenu($name, $callback, $icon = null, $class = null, $id = null, $target = null, $badgeClass = null, $badgeName = null)
     {
         $item = new Item();
         $item->new($name, 'javascript:void(0)', $icon, $class, $id, $target, $badgeClass, $badgeName);

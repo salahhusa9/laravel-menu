@@ -119,6 +119,23 @@ class Menu
         $this->menu[] = $item;
         return $this;
     }
+
+    public function addItem(
+        $name,
+        $routeName = null,
+        $icon = null,
+        $class = null,
+        $id = null,
+        $target = null,
+        $badgeClass = null,
+        $badgeName = null,
+    )
+    {
+        $item = new Item();
+        $item->new($name, $routeName, $icon, $class, $id, $target, $badgeClass, $badgeName);
+        $this->menu[] = $item;
+        return $item;
+    }
     
     /**
      * addSubmenu - add a submenu to the menu

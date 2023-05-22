@@ -130,7 +130,8 @@ class Menu
      * @param  string $id
      * @param  string $target
      * @param  string $badgeClass
-     * @param  string,array $badgeName
+     * @param  string $badgeName
+     * @param  string,array $gateName
      * @return \Salahhusa9\Menu\Item
      */
     public function addItem(
@@ -142,6 +143,7 @@ class Menu
         $target = null,
         $badgeClass = null,
         $badgeName = null,
+        $gateName = null
     ) {
         $item = new Item();
         $item->new($name, $routeName, $icon, $class, $id, $target, $badgeClass, $badgeName, $gateName = null);

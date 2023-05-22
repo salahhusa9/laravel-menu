@@ -167,7 +167,7 @@ class Menu
     public function addSubmenu($name, $callback, $icon = null, $class = null, $id = null, $target = null, $badgeClass = null, $badgeName = null, $gateName = null)
     {
         $item = new Item();
-        $item->new($name, null, $icon, $class, $id, $target, $badgeClass, $badgeName, $gateName = null);
+        $item->new($name, null, $icon, $class, $id, $target, $badgeClass, $badgeName, $gateName);
         $item->addSubmenu($callback);
         $this->menu[] = $item;
 

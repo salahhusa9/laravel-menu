@@ -182,6 +182,11 @@ class Item
         return request()->routeIs($this->routeName);
     }
 
+    /**
+     * canShow
+     *
+     * @return bool
+     */
     public function canShow()
     {
         if (is_null($this->gateName)) {
@@ -198,6 +203,18 @@ class Item
         }
 
         return auth()->user()->can($this->gateName);
+    }
+    
+    /**
+     * setGate
+     *
+     * @param  mixed $gateName
+     * @return void
+     */
+    public function setGate($gateName)
+    {
+        $this->gateName = $gateName;
+        return $this;
     }
 
     /**

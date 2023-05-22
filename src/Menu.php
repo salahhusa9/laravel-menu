@@ -101,7 +101,7 @@ class Menu
      * @param string $id
      * @param string $target
      * @param string $badgeClass
-     * @param string $badgeName
+     * @param string,array $gateName
      * @return \Salahhusa9\Menu\Menu
      */
     public function add(
@@ -115,11 +115,24 @@ class Menu
         $badgeName = null,
     ) {
         $item = new Item();
-        $item->new($name, $routeName, $icon, $class, $id, $target, $badgeClass, $badgeName);
+        $item->new($name, $routeName, $icon, $class, $id, $target, $badgeClass, $badgeName, $gateName = null);
         $this->menu[] = $item;
         return $this;
     }
 
+    /**
+     * addItem
+     *
+     * @param  string $name
+     * @param  string $routeName
+     * @param  string $icon
+     * @param  string $class
+     * @param  string $id
+     * @param  string $target
+     * @param  string $badgeClass
+     * @param  string,array $badgeName
+     * @return \Salahhusa9\Menu\Item
+     */
     public function addItem(
         $name,
         $routeName = null,
@@ -129,14 +142,13 @@ class Menu
         $target = null,
         $badgeClass = null,
         $badgeName = null,
-    )
-    {
+    ) {
         $item = new Item();
-        $item->new($name, $routeName, $icon, $class, $id, $target, $badgeClass, $badgeName);
+        $item->new($name, $routeName, $icon, $class, $id, $target, $badgeClass, $badgeName, $gateName = null);
         $this->menu[] = $item;
         return $item;
     }
-    
+
     /**
      * addSubmenu - add a submenu to the menu
      *
@@ -147,13 +159,13 @@ class Menu
      * @param string $id
      * @param string $target
      * @param string $badgeClass
-     * @param string $badgeName
+     * @param string,array $gateName
      * @return \Salahhusa9\Menu\Menu
      */
-    public function addSubmenu($name, $callback, $icon = null, $class = null, $id = null, $target = null, $badgeClass = null, $badgeName = null)
+    public function addSubmenu($name, $callback, $icon = null, $class = null, $id = null, $target = null, $badgeClass = null, $badgeName = null, $gateName = null)
     {
         $item = new Item();
-        $item->new($name, null, $icon, $class, $id, $target, $badgeClass, $badgeName);
+        $item->new($name, null, $icon, $class, $id, $target, $badgeClass, $badgeName, $gateName = null);
         $item->addSubmenu($callback);
         $this->menu[] = $item;
 

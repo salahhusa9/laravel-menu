@@ -53,6 +53,11 @@ class Item
     public $submenu = [];
 
     /**
+     * @var string,array
+     */
+    public $gateName = null;
+
+    /**
      * Add a new item to the menu
      * @param string $name
      * @param string $routeName
@@ -62,6 +67,7 @@ class Item
      * @param string $target
      * @param string $badgeClass
      * @param string $badgeName
+     * @param string,array $gateName
      * @return Item
      */
     public function new(
@@ -73,6 +79,7 @@ class Item
         $target = null,
         $badgeClass = null,
         $badgeName = null,
+        $gateName = null
     ) {
         $this->name = $name;
         $this->routeName = $routeName;
@@ -82,6 +89,7 @@ class Item
         $this->target = $target;
         $this->badgeClass = $badgeClass;
         $this->badgeName = $badgeName;
+        $this->gateName = $gateName;
 
         return $this;
     }

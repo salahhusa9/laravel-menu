@@ -182,6 +182,24 @@ class Item
         return request()->routeIs($this->routeName);
     }
 
+    public function canShow()
+    {
+        if (is_null($this->gateName)) {
+            return true;
+        }
+
+        if (is_array($this->gateName)) {
+            foreach ($this->gateName as $gateName) {
+                if (auth()->user()->can($gateName)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        return auth()->user()->can($this->gateName);
+    }
+
     /**
      * addLiClassIfHasSubmenu
      *

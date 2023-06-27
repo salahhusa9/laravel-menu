@@ -113,9 +113,10 @@ class Menu
         $target = null,
         $badgeClass = null,
         $badgeName = null,
+        $gateName = null
     ) {
         $item = new Item();
-        $item->new($name, $routeName, $icon, $class, $id, $target, $badgeClass, $badgeName, $gateName = null);
+        $item->new($name, $routeName, $icon, $class, $id, $target, $badgeClass, $badgeName, $gateName);
         $this->menu[] = $item;
         return $this;
     }

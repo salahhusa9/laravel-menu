@@ -141,9 +141,9 @@ it('render view with gate', function () {
 
     $view = Menu::render();
     expect($view)->toBeString();
-    expect($view)->not->toContain('test1');
-    expect($view)->not->toContain('test2');
-    expect($view)->not->toContain('test3');
-    expect($view)->not->toContain('test4');
-    expect($view)->not->toContain('test5');
+    expect($view)->toContain('test1');
+    expect($view)->toContain('test2');
+    expect($view)->toContain('test3');
+    expect($view)->toContain('test4');
+    expect($view)->toContain('test5');
 });

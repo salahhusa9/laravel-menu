@@ -61,7 +61,7 @@ it('Test Store Menu with custom class', function () {
     expect($menu[3]->submenu)->toHaveCount(0);
 });
 
-it('render view', function() {
+it('render view', function () {
     Menu::add('test')
         ->add('test2')
         ->addSubmenu('test3', function ($menu) {
@@ -78,7 +78,7 @@ it('render view', function() {
     expect($view)->toContain('test5');
 });
 
-it('render view with custom class', function() {
+it('render view with custom class', function () {
     Menu::add('test', null, null, 'custom-class')
         ->add('test2', null, null, 'custom-class')
         ->addSubmenu('test3', function ($menu) {
@@ -95,7 +95,7 @@ it('render view with custom class', function() {
     expect($view)->toContain('test5');
 });
 
-it('render view with custom class and id', function() {
+it('render view with custom class and id', function () {
     Menu::add('test', null, null, 'custom-class', 'custom-id')
         ->add('test2', null, null, 'custom-class', 'custom-id')
         ->addSubmenu('test3', function ($menu) {
@@ -112,7 +112,7 @@ it('render view with custom class and id', function() {
     expect($view)->toContain('test5');
 });
 
-it('render view with custom class and id and target', function() {
+it('render view with custom class and id and target', function () {
     Menu::add('test', null, null, 'custom-class', 'custom-id', '_blank')
         ->add('test2', null, null, 'custom-class', 'custom-id', '_blank')
         ->addSubmenu('test3', function ($menu) {
@@ -131,8 +131,8 @@ it('render view with custom class and id and target', function() {
 
 // check gate
 
-it('render view with gate', function() {
-    Menu::add('test', null, null, 'custom-class', 'custom-id', '_blank', null, null, 'test-gate')
+it('render view with gate', function () {
+    Menu::add('test1', null, null, 'custom-class', 'custom-id', '_blank', null, null)
         ->add('test2', null, null, 'custom-class', 'custom-id', '_blank', null, null, 'test-gate')
         ->addSubmenu('test3', function ($menu) {
             $menu->add('test4', null, null, 'custom-class', 'custom-id', '_blank', null, null, 'test-gate');
@@ -141,10 +141,9 @@ it('render view with gate', function() {
 
     $view = Menu::render();
     expect($view)->toBeString();
-    expect($view)->toContain('test');
-    expect($view)->toContain('test2');
-    expect($view)->toContain('test3');
-    expect($view)->toContain('test4');
-    expect($view)->toContain('test5');
+    expect($view)->toContain('test1');
+    expect($view)->not->toContain('test2');
+    expect($view)->not->toContain('test3');
+    expect($view)->not->toContain('test4');
+    expect($view)->not->toContain('test5');
 });
-

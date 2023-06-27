@@ -132,7 +132,7 @@ it('render view with custom class and id and target', function () {
 // check gate
 
 it('render view with gate', function () {
-    Menu::add('test1', null, null, 'custom-class', 'custom-id', '_blank', null, null)
+    Menu::add('test1', null, null, 'custom-class', 'custom-id', '_blank', null, null, 'test-gate')
         ->add('test2', null, null, 'custom-class', 'custom-id', '_blank', null, null, 'test-gate')
         ->addSubmenu('test3', function ($menu) {
             $menu->add('test4', null, null, 'custom-class', 'custom-id', '_blank', null, null, 'test-gate');
@@ -141,7 +141,7 @@ it('render view with gate', function () {
 
     $view = Menu::render();
     expect($view)->toBeString();
-    expect($view)->toContain('test1');
+    expect($view)->not->toContain('test1');
     expect($view)->not->toContain('test2');
     expect($view)->not->toContain('test3');
     expect($view)->not->toContain('test4');

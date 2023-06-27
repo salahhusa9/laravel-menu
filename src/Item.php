@@ -193,6 +193,10 @@ class Item
             return true;
         }
 
+        if (auth()->check() === false) {
+            return true;
+        }
+
         if (is_array($this->gateName)) {
             foreach ($this->gateName as $gateName) {
                 if (auth()->user()->can($gateName)) {
@@ -204,7 +208,7 @@ class Item
 
         return auth()->user()->can($this->gateName);
     }
-    
+
     /**
      * setGate
      *

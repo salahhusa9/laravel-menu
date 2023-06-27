@@ -1,7 +1,7 @@
 <ul class="{{ $menu->getUlClass() }}">
 
     @foreach ($menu->getMenu() as $item)
-        @if (auth()->check() && $item->canShow())
+        @if ($item->canShow())
             <li
                 class="
                     {{ $menu->getLiClass() }} 

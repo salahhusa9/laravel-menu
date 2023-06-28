@@ -122,12 +122,12 @@ it('render view', function () {
 });
 
 it('render view with custom class', function () {
-    Menu::add('test', null, null, 'custom-class')
-        ->add('test2', null, null, 'custom-class')
+    Menu::add('test', null, ['class' => 'custom-class'])
+        ->add('test2', null, ['class' => 'custom-class'])
         ->addSubmenu('test3', function ($menu) {
-            $menu->add('test4', null, null, 'custom-class');
-        }, null, 'custom-class')
-        ->add('test5', null, null, 'custom-class');
+            $menu->add('test4', null, ['class' => 'custom-class']);
+        }, ['class' => 'custom-class'])
+        ->add('test5', null, ['class' => 'custom-class']);
 
     $view = Menu::render();
     expect($view)->toBeString();
@@ -139,12 +139,12 @@ it('render view with custom class', function () {
 });
 
 it('render view with custom class and id', function () {
-    Menu::add('test', null, null, 'custom-class', 'custom-id')
-        ->add('test2', null, null, 'custom-class', 'custom-id')
+    Menu::add('test', null, ['class' => 'custom-class', 'id' => 'custom-id'])
+        ->add('test2', null, ['class' => 'custom-class', 'id' => 'custom-id'])
         ->addSubmenu('test3', function ($menu) {
-            $menu->add('test4', null, null, 'custom-class', 'custom-id');
-        }, null, 'custom-class', 'custom-id')
-        ->add('test5', null, null, 'custom-class', 'custom-id');
+            $menu->add('test4', null, ['class' => 'custom-class', 'id' => 'custom-id']);
+        }, ['class' => 'custom-class', 'id' => 'custom-id'])
+        ->add('test5', null, ['class' => 'custom-class', 'id' => 'custom-id']);
 
     $view = Menu::render();
     expect($view)->toBeString();
@@ -156,12 +156,12 @@ it('render view with custom class and id', function () {
 });
 
 it('render view with custom class and id and target', function () {
-    Menu::add('test', null, null, 'custom-class', 'custom-id', '_blank')
-        ->add('test2', null, null, 'custom-class', 'custom-id', '_blank')
+    Menu::add('test', null, ['class' => 'custom-class', 'id' => 'custom-id', 'target' => '_blank'])
+        ->add('test2', null, ['class' => 'custom-class', 'id' => 'custom-id', 'target' => '_blank'])
         ->addSubmenu('test3', function ($menu) {
-            $menu->add('test4', null, null, 'custom-class', 'custom-id', '_blank');
-        }, null, 'custom-class', 'custom-id', '_blank')
-        ->add('test5', null, null, 'custom-class', 'custom-id', '_blank');
+            $menu->add('test4', null, ['class' => 'custom-class', 'id' => 'custom-id', 'target' => '_blank']);
+        }, ['class' => 'custom-class', 'id' => 'custom-id', 'target' => '_blank'])
+        ->add('test5', null, ['class' => 'custom-class', 'id' => 'custom-id', 'target' => '_blank']);
 
     $view = Menu::render();
     expect($view)->toBeString();
@@ -175,12 +175,12 @@ it('render view with custom class and id and target', function () {
 // check gate
 
 it('render view with gate', function () {
-    Menu::add('test1', null, null, 'custom-class', 'custom-id', '_blank', null, null, 'test-gate')
-        ->add('test2', null, null, 'custom-class', 'custom-id', '_blank', null, null, 'test-gate')
+    Menu::add('test1', null, ['class' => 'custom-class', 'gateName' => 'gateName'])
+        ->add('test2', null, ['class' => 'custom-class', 'gateName' => 'gateName'])
         ->addSubmenu('test3', function ($menu) {
-            $menu->add('test4', null, null, 'custom-class', 'custom-id', '_blank', null, null, 'test-gate');
-        }, null, 'custom-class', 'custom-id', '_blank', null, null, 'test-gate')
-        ->add('test5', null, null, 'custom-class', 'custom-id', '_blank', null, null, 'test-gate');
+            $menu->add('test4', null, ['class' => 'custom-class', 'gateName' => 'gateName']);
+        }, ['class' => 'custom-class', 'gateName' => 'gateName'])
+        ->add('test5', null, ['class' => 'custom-class', 'gateName' => 'gateName']);
 
     $view = Menu::render();
     expect($view)->toBeString();

@@ -101,7 +101,7 @@ class Menu
      * @param string $id
      * @param string $target
      * @param string $badgeClass
-     * @param string,array $gateName
+     * @param string array $gateName
      * @return \Salahhusa9\Menu\Menu
      */
     public function add(
@@ -132,7 +132,7 @@ class Menu
      * @param  string $target
      * @param  string $badgeClass
      * @param  string $badgeName
-     * @param  string,array $gateName
+     * @param  string array $gateName
      * @return \Salahhusa9\Menu\Item
      */
     public function addItem(
@@ -162,7 +162,7 @@ class Menu
      * @param string $id
      * @param string $target
      * @param string $badgeClass
-     * @param string,array $gateName
+     * @param string array $gateName
      * @return \Salahhusa9\Menu\Menu
      */
     public function addSubmenu($name, $callback, $icon = null, $class = null, $id = null, $target = null, $badgeClass = null, $badgeName = null, $gateName = null)

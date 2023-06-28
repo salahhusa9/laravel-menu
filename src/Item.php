@@ -53,7 +53,7 @@ class Item
     public $submenu = [];
 
     /**
-     * @var string,array
+     * @var string array
      */
     public $gateName = null;
 
@@ -67,7 +67,7 @@ class Item
      * @param string $target
      * @param string $badgeClass
      * @param string $badgeName
-     * @param string,array $gateName
+     * @param string array $gateName
      * @return Item
      */
     public function new(
@@ -213,7 +213,7 @@ class Item
      * setGate
      *
      * @param  mixed $gateName
-     * @return void
+     * @return Item
      */
     public function setGate($gateName)
     {

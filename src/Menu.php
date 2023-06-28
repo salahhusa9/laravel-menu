@@ -91,6 +91,21 @@ class Menu
         $this->menu = $menu;
         return $this;
     }
+    
+    /**
+     * make
+     *
+     * @param  string $for
+     * @param  \Closure $callback
+     * @return void
+     */
+    public function make($for, $callback)
+    {
+        $menu = new Menu();
+        $callback($menu);
+        $this->menu[$for] = $menu->getMenu();
+        return $this;
+    }
 
     /**
      * Add a new item to the menu
@@ -158,7 +173,7 @@ class Menu
      * @param array $options
      * @return \Salahhusa9\Menu\Menu
      */
-    public function addSubmenu($name, $callback, $options)
+    public function addSubmenu($name, $callback, $options = [])
     {
         $item = new Item();
         $item->new(
@@ -182,18 +197,24 @@ class Menu
      * Get the menu
      * @return array
      */
-    public function getMenu()
+    public function getMenu($name = null)
     {
-        return $this->menu;
+        if ($name === null) {
+            return $this->menu;
+        }
+        return $this->menu[$name];
     }
 
     /**
      * Get the menu
      * @return Menu
      */
-    public function get()
+    public function get($name = null)
     {
-        return $this;
+        if ($name === null) {
+            return $this;
+        }
+        return $this->menu[$name];
     }
 
     /**

@@ -53,6 +53,11 @@ class Item
     public $submenu = [];
 
     /**
+     * @var string array
+     */
+    public $gateName = null;
+
+    /**
      * Add a new item to the menu
      * @param string $name
      * @param string $routeName
@@ -62,6 +67,7 @@ class Item
      * @param string $target
      * @param string $badgeClass
      * @param string $badgeName
+     * @param string array $gateName
      * @return Item
      */
     public function new(
@@ -73,6 +79,7 @@ class Item
         $target = null,
         $badgeClass = null,
         $badgeName = null,
+        $gateName = null
     ) {
         $this->name = $name;
         $this->routeName = $routeName;
@@ -82,6 +89,7 @@ class Item
         $this->target = $target;
         $this->badgeClass = $badgeClass;
         $this->badgeName = $badgeName;
+        $this->gateName = $gateName;
 
         return $this;
     }
@@ -172,6 +180,45 @@ class Item
     public function isActive()
     {
         return request()->routeIs($this->routeName);
+    }
+
+    /**
+     * canShow
+     *
+     * @return bool
+     */
+    public function canShow()
+    {
+        if (is_null($this->gateName)) {
+            return true;
+        }
+
+        if (auth()->check() === false) {
+            return true;
+        }
+
+        if (is_array($this->gateName)) {
+            foreach ($this->gateName as $gateName) {
+                if (auth()->user()->can($gateName)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        return auth()->user()->can($this->gateName);
+    }
+
+    /**
+     * setGate
+     *
+     * @param  mixed $gateName
+     * @return Item
+     */
+    public function setGate($gateName)
+    {
+        $this->gateName = $gateName;
+        return $this;
     }
 
     /**

@@ -28,6 +28,13 @@ class Menu
      */
     protected bool $isSubmenu = false;
 
+    /**
+     * customView
+     *
+     * @var string|null
+     */
+    protected ?string $customView = null;
+
     public function __construct()
     {
         $this->config();
@@ -266,6 +273,11 @@ class Menu
     public function isSubmenu()
     {
         return $this->isSubmenu;
+    }
+
+    public function customView()
+    {
+        return $this->customView;
     }
 
     /**

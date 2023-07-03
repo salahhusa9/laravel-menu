@@ -17,6 +17,6 @@ class Menu extends Component
 
     public function render()
     {
-        return view('menu::components.menu');
+        return view($this->menu->customView() ?: 'menu::components.menu');
     }
 }

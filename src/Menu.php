@@ -103,7 +103,7 @@ class Menu
     {
         $menu = new Menu();
         $callback($menu);
-        $this->menu[$for] = $menu->getMenu();
+        $this->menu[$for] = $menu;
         return $this;
     }
 

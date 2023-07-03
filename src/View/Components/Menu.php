@@ -9,11 +9,10 @@ use Salahhusa9\Menu\Menu as MenuMenu;
 class Menu extends Component
 {
     public MenuMenu $menu;
-    public string $for;
 
-    public function __construct()
+    public function __construct(public string $for)
     {
-        $this->menu = FacadesMenu::get($this->for);
+        $this->menu = FacadesMenu::get($for);
     }
 
     public function render()

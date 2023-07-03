@@ -209,7 +209,7 @@ class Menu
         if ($name === null) {
             return $this->menu;
         }
-        return $this->menu[$name];
+        return $this->menu[$name]->menu;
     }
 
     /**
@@ -295,7 +295,6 @@ class Menu
      */
     public function render()
     {
-        info('render', ['menu' => (array) $this->menu]);
         return view('menu::components.menu', ['menu' => $this])->render();
     }
 

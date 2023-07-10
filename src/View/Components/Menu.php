@@ -10,13 +10,13 @@ class Menu extends Component
 {
     public MenuMenu $menu;
 
-    public function __construct()
+    public function __construct(public string $for)
     {
-        $this->menu = FacadesMenu::get();
+        $this->menu = FacadesMenu::get($for);
     }
 
     public function render()
     {
-        return view('menu::components.menu');
+        return view($this->menu->customView() ?: 'menu::components.menu');
     }
 }

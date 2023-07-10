@@ -28,6 +28,13 @@ class Menu
      */
     protected bool $isSubmenu = false;
 
+    /**
+     * customView
+     *
+     * @var string|null
+     */
+    protected ?string $customView = null;
+
     public function __construct()
     {
         $this->config();
@@ -91,32 +98,47 @@ class Menu
         $this->menu = $menu;
         return $this;
     }
+    
+    /**
+     * make
+     *
+     * @param  string $for
+     * @param  \Closure $callback
+     * @return void
+     */
+    public function make($for, $callback)
+    {
+        $menu = new Menu();
+        $callback($menu);
+        $this->menu[$for] = $menu;
+        return $this;
+    }
 
     /**
      * Add a new item to the menu
      * @param string $name
      * @param string $routeName
-     * @param string $icon
-     * @param string $class
-     * @param string $id
-     * @param string $target
-     * @param string $badgeClass
-     * @param string array $gateName
+     * @param array $options
      * @return \Salahhusa9\Menu\Menu
      */
     public function add(
         $name,
         $routeName = null,
-        $icon = null,
-        $class = null,
-        $id = null,
-        $target = null,
-        $badgeClass = null,
-        $badgeName = null,
-        $gateName = null
+        $options = [],
     ) {
         $item = new Item();
-        $item->new($name, $routeName, $icon, $class, $id, $target, $badgeClass, $badgeName, $gateName);
+        $item->new(
+            $name,
+            $routeName,
+            $options['icon'] ?? null,
+            $options['class'] ?? null,
+            $options['id'] ?? null,
+            $options['target'] ?? null,
+            $options['badgeClass'] ?? null,
+            $options['badgeName'] ?? null,
+            $options['gateName'] ?? null
+        );
+
         $this->menu[] = $item;
         return $this;
     }
@@ -126,28 +148,26 @@ class Menu
      *
      * @param  string $name
      * @param  string $routeName
-     * @param  string $icon
-     * @param  string $class
-     * @param  string $id
-     * @param  string $target
-     * @param  string $badgeClass
-     * @param  string $badgeName
-     * @param  string array $gateName
+     * @param  array $options
      * @return \Salahhusa9\Menu\Item
      */
     public function addItem(
         $name,
         $routeName = null,
-        $icon = null,
-        $class = null,
-        $id = null,
-        $target = null,
-        $badgeClass = null,
-        $badgeName = null,
-        $gateName = null
+        $options = [],
     ) {
         $item = new Item();
-        $item->new($name, $routeName, $icon, $class, $id, $target, $badgeClass, $badgeName, $gateName);
+        $item->new(
+            $name,
+            $routeName,
+            $options['icon'] ?? null,
+            $options['class'] ?? null,
+            $options['id'] ?? null,
+            $options['target'] ?? null,
+            $options['badgeClass'] ?? null,
+            $options['badgeName'] ?? null,
+            $options['gateName'] ?? null
+        );
         $this->menu[] = $item;
         return $item;
     }
@@ -156,19 +176,24 @@ class Menu
      * addSubmenu - add a submenu to the menu
      *
      * @param string $name
-     * @param $callback
-     * @param string $icon
-     * @param string $class
-     * @param string $id
-     * @param string $target
-     * @param string $badgeClass
-     * @param string array $gateName
+     * @param \Closure $callback
+     * @param array $options
      * @return \Salahhusa9\Menu\Menu
      */
-    public function addSubmenu($name, $callback, $icon = null, $class = null, $id = null, $target = null, $badgeClass = null, $badgeName = null, $gateName = null)
+    public function addSubmenu($name, $callback, $options = [])
     {
         $item = new Item();
-        $item->new($name, null, $icon, $class, $id, $target, $badgeClass, $badgeName, $gateName);
+        $item->new(
+            $name,
+            null,
+            $options['icon'] ?? null,
+            $options['class'] ?? null,
+            $options['id'] ?? null,
+            $options['target'] ?? null,
+            $options['badgeClass'] ?? null,
+            $options['badgeName'] ?? null,
+            $options['gateName'] ?? null
+        );
         $item->addSubmenu($callback);
         $this->menu[] = $item;
 
@@ -179,18 +204,24 @@ class Menu
      * Get the menu
      * @return array
      */
-    public function getMenu()
+    public function getMenu($name = null)
     {
-        return $this->menu;
+        if ($name === null) {
+            return $this->menu;
+        }
+        return $this->menu[$name]->menu;
     }
 
     /**
      * Get the menu
      * @return Menu
      */
-    public function get()
+    public function get($name = null)
     {
-        return $this;
+        if ($name === null) {
+            return $this;
+        }
+        return $this->menu[$name];
     }
 
     /**
@@ -244,6 +275,11 @@ class Menu
         return $this->isSubmenu;
     }
 
+    public function customView()
+    {
+        return $this->customView;
+    }
+
     /**
      * Get the menu as JSON
      * @return string
@@ -259,7 +295,6 @@ class Menu
      */
     public function render()
     {
-        info('render', ['menu' => (array) $this->menu]);
         return view('menu::components.menu', ['menu' => $this])->render();
     }
 

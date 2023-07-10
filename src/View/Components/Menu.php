@@ -10,7 +10,7 @@ class Menu extends Component
 {
     public MenuMenu $menu;
 
-    public function __construct(public string $for)
+    public function __construct(public $for = null)
     {
         $this->menu = FacadesMenu::get($for);
     }

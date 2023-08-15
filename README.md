@@ -113,6 +113,24 @@ You can customize the menu view by publishing the views using
 php artisan vendor:publish --tag="menu-views"
 ```
 
+### Multiple Menus
+
+You can create multiple menus in your application:
+
+```php
+    Menu::make('sidebar', function ($menu) {
+        $menu->add('test', 'route.name');
+    });
+
+    Menu::make('main', function ($menu) {
+        $menu->add('test', 'route.name');
+    });
+```
+
+For render the menu, use the `<x-menu for="sidebar" />` blade component.
+
+```html
+
 ## Configuration of the defult menu Classes of Ul and Li and the active class
 
 You can publish the config file with:

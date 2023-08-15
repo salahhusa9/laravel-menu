@@ -2,10 +2,9 @@
 
 namespace Salahhusa9\Menu;
 
+use Salahhusa9\Menu\View\Components\Menu;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Salahhusa9\Menu\Commands\MenuCommand;
-use Salahhusa9\Menu\View\Components\Menu;
 
 class MenuServiceProvider extends PackageServiceProvider
 {

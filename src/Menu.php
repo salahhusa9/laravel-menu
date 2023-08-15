@@ -2,10 +2,8 @@
 
 namespace Salahhusa9\Menu;
 
-use Salahhusa9\Menu\Item;
-
 /**
- * Menu: A simple menu builder for Laravel 
+ * Menu: A simple menu builder for Laravel
  */
 class Menu
 {
@@ -23,15 +21,11 @@ class Menu
 
     /**
      * isSubmenu: this is used to determine if the menu is a submenu or not
-     *
-     * @var bool
      */
     protected bool $isSubmenu = false;
 
     /**
      * customView
-     *
-     * @var string|null
      */
     protected ?string $customView = null;
 
@@ -53,57 +47,58 @@ class Menu
     /**
      * setConfigs
      *
-     * @param  array $configs
      * @return Menu
      */
     public function setConfigs(array $configs = [])
     {
         $this->configs = $configs;
+
         return $this;
     }
 
     /**
      * setConfig
      *
-     * @param  mixed $key
-     * @param  mixed $value
+     * @param  mixed  $key
+     * @param  mixed  $value
      * @return Menu
      */
     public function setConfig($key, $value)
     {
         $this->configs[$key] = $value;
+
         return $this;
     }
 
     /**
      * setIsSubmenu
      *
-     * @param  bool $isSubmenu
      * @return Menu
      */
     public function setIsSubmenu(bool $isSubmenu = true)
     {
         $this->isSubmenu = $isSubmenu;
+
         return $this;
     }
 
     /**
      * setMenu
      *
-     * @param  array $menu
      * @return Menu
      */
     public function setMenu(array $menu)
     {
         $this->menu = $menu;
+
         return $this;
     }
-    
+
     /**
      * make
      *
-     * @param  string $for
-     * @param  \Closure $callback
+     * @param  string  $for
+     * @param  \Closure  $callback
      * @return void
      */
     public function make($for, $callback)
@@ -111,14 +106,16 @@ class Menu
         $menu = new Menu();
         $callback($menu);
         $this->menu[$for] = $menu;
+
         return $this;
     }
 
     /**
      * Add a new item to the menu
-     * @param string $name
-     * @param string $routeName
-     * @param array $options
+     *
+     * @param  string  $name
+     * @param  string  $routeName
+     * @param  array  $options
      * @return \Salahhusa9\Menu\Menu
      */
     public function add(
@@ -140,15 +137,16 @@ class Menu
         );
 
         $this->menu[] = $item;
+
         return $this;
     }
 
     /**
      * addItem
      *
-     * @param  string $name
-     * @param  string $routeName
-     * @param  array $options
+     * @param  string  $name
+     * @param  string  $routeName
+     * @param  array  $options
      * @return \Salahhusa9\Menu\Item
      */
     public function addItem(
@@ -169,15 +167,16 @@ class Menu
             $options['gateName'] ?? null
         );
         $this->menu[] = $item;
+
         return $item;
     }
 
     /**
      * addSubmenu - add a submenu to the menu
      *
-     * @param string $name
-     * @param \Closure $callback
-     * @param array $options
+     * @param  string  $name
+     * @param  \Closure  $callback
+     * @param  array  $options
      * @return \Salahhusa9\Menu\Menu
      */
     public function addSubmenu($name, $callback, $options = [])
@@ -202,6 +201,7 @@ class Menu
 
     /**
      * Get the menu
+     *
      * @return array
      */
     public function getMenu($name = null)
@@ -209,11 +209,13 @@ class Menu
         if ($name === null) {
             return $this->menu;
         }
+
         return $this->menu[$name]->menu;
     }
 
     /**
      * Get the menu
+     *
      * @return Menu
      */
     public function get($name = null)
@@ -221,6 +223,7 @@ class Menu
         if ($name === null) {
             return $this;
         }
+
         return $this->menu[$name];
     }
 
@@ -257,7 +260,7 @@ class Menu
     /**
      * getConfig
      *
-     * @param  mixed $key
+     * @param  mixed  $key
      * @return string|null
      */
     public function getConfig($key)
@@ -282,6 +285,7 @@ class Menu
 
     /**
      * Get the menu as JSON
+     *
      * @return string
      */
     public function getMenuAsJson()
@@ -291,6 +295,7 @@ class Menu
 
     /**
      * Render the menu
+     *
      * @return string
      */
     public function render()
@@ -300,6 +305,7 @@ class Menu
 
     /**
      * Render the menu as JSON
+     *
      * @return string
      */
     public function renderAsJson()
@@ -309,6 +315,7 @@ class Menu
 
     /**
      * Render the menu as JSON
+     *
      * @return string
      */
     public function renderAsHtml()

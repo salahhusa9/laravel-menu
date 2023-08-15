@@ -3,7 +3,6 @@
 namespace Salahhusa9\Menu;
 
 use Salahhusa9\Menu\Facades\Menu as FacadesMenu;
-use Salahhusa9\Menu\Menu;
 
 class Item
 {
@@ -59,14 +58,15 @@ class Item
 
     /**
      * Add a new item to the menu
-     * @param string $name
-     * @param string $routeName
-     * @param string $icon
-     * @param string $class
-     * @param string $id
-     * @param string $target
-     * @param string $badgeClass
-     * @param string $badgeName
+     *
+     * @param  string  $name
+     * @param  string  $routeName
+     * @param  string  $icon
+     * @param  string  $class
+     * @param  string  $id
+     * @param  string  $target
+     * @param  string  $badgeClass
+     * @param  string  $badgeName
      * @param string array $gateName
      * @return Item
      */
@@ -97,7 +97,6 @@ class Item
     /**
      * addSubmenu - add a submenu to the menu
      *
-     * @param $callback
      * @return Item
      */
     public function addSubmenu($callback)
@@ -105,6 +104,7 @@ class Item
         $menu = new Menu();
         $callback($menu);
         $this->submenu = $menu->getMenu();
+
         return $this;
     }
 
@@ -118,6 +118,7 @@ class Item
         if ($this->isActive()) {
             return FacadesMenu::getConfig('a_active_class');
         }
+
         return '';
     }
 
@@ -131,6 +132,7 @@ class Item
         if ($this->isActive()) {
             return FacadesMenu::getConfig('li_active_class');
         }
+
         return '';
     }
 
@@ -144,6 +146,7 @@ class Item
         if ($this->hasActiveSubmenu()) {
             return FacadesMenu::getConfig('li_sub_menu_open_class');
         }
+
         return '';
     }
 
@@ -169,6 +172,7 @@ class Item
                 return true;
             }
         }
+
         return false;
     }
 
@@ -203,6 +207,7 @@ class Item
                     return true;
                 }
             }
+
             return false;
         }
 
@@ -212,12 +217,13 @@ class Item
     /**
      * setGate
      *
-     * @param  mixed $gateName
+     * @param  mixed  $gateName
      * @return Item
      */
     public function setGate($gateName)
     {
         $this->gateName = $gateName;
+
         return $this;
     }
 
@@ -252,7 +258,7 @@ class Item
      */
     public function getAClass()
     {
-        return ($this->hasSubmenu() ? FacadesMenu::getConfig('a_sub_menu_class') : FacadesMenu::getConfig('a_class')) . ' ' . $this->getClass();
+        return ($this->hasSubmenu() ? FacadesMenu::getConfig('a_sub_menu_class') : FacadesMenu::getConfig('a_class')).' '.$this->getClass();
     }
 
     /**
@@ -275,6 +281,7 @@ class Item
         $menu = new Menu();
         $menu->setIsSubmenu();
         $menu->setMenu($this->submenu);
+
         return $menu;
     }
 }

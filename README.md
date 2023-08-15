@@ -69,28 +69,40 @@ To render the menu, use the `<x-menu />` blade component.
 ```
 
 ### Customization of the menu
+
 Icons can be added to the menu items by passing the icon parameter to the add() method.
 
 ```php
-Menu::add('test', 'route.name', 'fa fa-home');
+Menu::add('test', 'route.name', ['icon' => 'fa fa-home']);
 ```
 
 You can also add a id and class to the menu item by passing the id and class parameters to the add() method.
 
 ```php
-Menu::add('test', 'route.name', 'fa fa-home', 'class', 'id');
+Menu::add('test', 'route.name',['class' => 'customClass', 'id' => 'customId']);
 ```
 
 You can also add a target to the menu item by passing the target parameter to the add() method.
 
 ```php
-Menu::add('test', 'route.name', 'fa fa-home', 'class', 'id', '_blank');
+Menu::add('test', 'route.name', ['target' => '_blank']);
 ```
 
 You can also add a badge to the menu item by passing the badgeClass and badgeName parameters to the add() method.
 
 ```php
-Menu::add('test', 'route.name', 'fa fa-home', 'class', 'id', '_blank', 'badge badge-success', 'New');
+Menu::add('test', 'route.name', ['badgeClass' => 'badge badge-success', 'badgeName' => 'New']);
+```
+
+You can also
+
+```php
+// old:
+if (auth()->user()->can('gateName')){
+    Menu::add('test', 'route.name');
+}
+// new:
+Menu::add('test', 'route.name', ['gateName' => 'gateName']);
 ```
 
 ### Customization of the menu view
@@ -138,27 +150,18 @@ Each Item accept this parames :
 
 ```php
 add(
-     string $name,
-     string $routeName,
-     string $icon,
-     string $class,
-     string $id,
-     string $target,
-     string $badgeClass,
-     string $badgeName
-     )
+    $name,
+    $routeName = null,
+    $options = [],
+)
 
 addSubmenu(
-     string $name,
-     callback $callbackOfSubmenu,
-     string $icon,
-     string $class,
-     string $id,
-     string $target,
-     string $badgeClass,
-     string $badgeName
-     )
+    $name,
+    callback $callbackOfSubmenu,
+    $options
+)
 ```
+
 There is other functions that you can used :
 
 ```php
@@ -170,7 +173,6 @@ Menu::renderAsHtml(); // return the menu as html
 ## Roadmap
 
 See the [open issues](../../issues) for a list of proposed features (and known issues).
-
 
 ## Testing
 

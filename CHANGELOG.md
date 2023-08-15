@@ -2,6 +2,22 @@
 
 All notable changes to `laravel-menu` will be documented in this file.
 
+## v1.0.0 - 2023-08-15
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.6 to 1.4.0 by @dependabot in https://github.com/salahhusa9/laravel-menu/pull/5
+- Bump dependabot/fetch-metadata from 1.4.0 to 1.5.1 by @dependabot in https://github.com/salahhusa9/laravel-menu/pull/8
+- Check gate by @salahhusa9 in https://github.com/salahhusa9/laravel-menu/pull/6
+- Update dependabot/fetch-metadata action to v1.6.0 by @renovate in https://github.com/salahhusa9/laravel-menu/pull/9
+- Support Multiple Menu by @salahhusa9 in https://github.com/salahhusa9/laravel-menu/pull/10
+
+### New Contributors
+
+- @dependabot made their first contribution in https://github.com/salahhusa9/laravel-menu/pull/5
+
+**Full Changelog**: https://github.com/salahhusa9/laravel-menu/compare/v0.0.1...v1.0.0
+
 ## Beta 1 - 2023-03-21
 
 ### What's Changed

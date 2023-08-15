@@ -123,11 +123,11 @@ class Menu
      */
     public function add(
         $name,
-        $routeName = null,new
+        $routeName = null,
         $options = [],
     ) {
         $item = new Item();
-        $item->(
+        $item->new(
             $name,
             $routeName,
             $options['icon'] ?? null,

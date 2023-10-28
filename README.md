@@ -129,8 +129,6 @@ You can create multiple menus in your application:
 
 For render the menu, use the `<x-menu for="sidebar" />` blade component.
 
-```html
-
 ## Configuration of the defult menu Classes of Ul and Li and the active class
 
 You can publish the config file with:

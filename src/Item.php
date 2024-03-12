@@ -171,7 +171,7 @@ class Item
             $menu = $this->submenu;
         }
 
-        foreach ($this->submenu as $item) {
+        foreach ($menu as $item) {
             if ($item->hasSubmenu() && $item->hasActiveSubmenu($item->submenu)){
                 return true;
             }

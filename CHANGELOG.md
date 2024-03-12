@@ -2,6 +2,17 @@
 
 All notable changes to `laravel-menu` will be documented in this file.
 
+## v1.1.0 - 2024-03-12
+
+### What's Changed
+
+* Bump actions/checkout from 3 to 4 by @dependabot in https://github.com/salahhusa9/laravel-menu/pull/11
+* Update stefanzweifel/git-auto-commit-action action to v5 by @renovate in https://github.com/salahhusa9/laravel-menu/pull/13
+* Refactor isActive() method to check child routes recursively by @salahhusa9 in https://github.com/salahhusa9/laravel-menu/pull/16
+* Support laravel 11 by @salahhusa9 in https://github.com/salahhusa9/laravel-menu/pull/17
+
+**Full Changelog**: https://github.com/salahhusa9/laravel-menu/compare/v1.0.0...v1.1.0
+
 ## v1.0.0 - 2023-08-15
 
 ### What's Changed

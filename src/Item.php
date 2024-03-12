@@ -165,9 +165,17 @@ class Item
      *
      * @return bool
      */
-    public function hasActiveSubmenu()
+    public function hasActiveSubmenu($menu = null)
     {
-        foreach ($this->submenu as $item) {
+        if (is_null($menu)) {
+            $menu = $this->submenu;
+        }
+
+        foreach ($menu as $item) {
+            if ($item->hasSubmenu() && $item->hasActiveSubmenu($item->submenu)){
+                return true;
+            }
+
             if ($item->isActive()) {
                 return true;
             }
@@ -177,13 +185,19 @@ class Item
     }
 
     /**
-     * addLiClassIfHasSubmenu
+     * isActive
      *
      * @return bool
      */
     public function isActive()
     {
-        return request()->routeIs($this->routeName);
+        if (request()->routeIs($this->routeName)) {
+            return true;
+        } else { // check child routes
+            return $this->hasActiveSubmenu(
+                $this->submenu
+            );
+        }
     }
 
     /**

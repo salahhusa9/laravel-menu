@@ -177,13 +177,22 @@ class Item
     }
 
     /**
-     * addLiClassIfHasSubmenu
+     * isActive
      *
      * @return bool
      */
     public function isActive()
     {
-        return request()->routeIs($this->routeName);
+        if (request()->routeIs($this->routeName)) {
+            return true;
+        } else { // check child routes
+            foreach ($this->submenu as $item) {
+                if ($item->isActive()) {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 
     /**

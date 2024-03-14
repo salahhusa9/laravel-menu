@@ -2,6 +2,17 @@
 
 All notable changes to `laravel-menu` will be documented in this file.
 
+## v1.1.1 - 2024-03-14
+
+### What's Changed
+
+* Update stefanzweifel/git-auto-commit-action action to v5 by @renovate in https://github.com/salahhusa9/laravel-menu/pull/20
+* Update actions/checkout action to v4 by @renovate in https://github.com/salahhusa9/laravel-menu/pull/19
+* Update shivammathur/setup-php digest to 48e0de2 by @renovate in https://github.com/salahhusa9/laravel-menu/pull/18
+* setCustomView  @salahhusa9
+
+**Full Changelog**: https://github.com/salahhusa9/laravel-menu/compare/v1.1.0...v1.1.1
+
 ## v1.1.0 - 2024-03-12
 
 ### What's Changed

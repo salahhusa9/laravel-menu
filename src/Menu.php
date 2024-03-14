@@ -284,6 +284,19 @@ class Menu
     }
 
     /**
+     * setCustomView
+     *
+     * @param  mixed $customView
+     * @return void
+     */
+    public function setCustomView($customView)
+    {
+        $this->customView = $customView;
+
+        return $this;
+    }
+
+    /**
      * Get the menu as JSON
      *
      * @return string

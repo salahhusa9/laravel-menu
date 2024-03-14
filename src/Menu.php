@@ -286,7 +286,7 @@ class Menu
     /**
      * setCustomView
      *
-     * @param  mixed $customView
+     * @param  mixed  $customView
      * @return void
      */
     public function setCustomView($customView)

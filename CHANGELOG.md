@@ -2,6 +2,21 @@
 
 All notable changes to `laravel-menu` will be documented in this file.
 
+## v1.1.2 - 2024-05-20
+
+### What's Changed
+
+* Update Laravel version in github action by @salahhusa9 in https://github.com/salahhusa9/laravel-menu/pull/25
+* Update dependabot/fetch-metadata action to v1.7.0 by @renovate in https://github.com/salahhusa9/laravel-menu/pull/22
+* Update dependabot/fetch-metadata action to v2 by @renovate in https://github.com/salahhusa9/laravel-menu/pull/23
+* Update shivammathur/setup-php digest to 8872c78 by @renovate in https://github.com/salahhusa9/laravel-menu/pull/24
+* Update dependabot/fetch-metadata action to v2.1.0 by @renovate in https://github.com/salahhusa9/laravel-menu/pull/27
+* Update shivammathur/setup-php digest to 868f02c by @renovate in https://github.com/salahhusa9/laravel-menu/pull/26
+* badgeName can be Closure by @salahhusa9 in https://github.com/salahhusa9/laravel-menu/pull/29
+* Update shivammathur/setup-php digest to d6560b1 by @renovate in https://github.com/salahhusa9/laravel-menu/pull/28
+
+**Full Changelog**: https://github.com/salahhusa9/laravel-menu/compare/v1.1.1...v1.1.2
+
 ## v1.1.1 - 2024-03-14
 
 ### What's Changed

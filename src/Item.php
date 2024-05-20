@@ -42,7 +42,7 @@ class Item
     public $badgeClass;
 
     /**
-     * @var string
+     * @var string|Closure
      */
     public $badgeName;
 
@@ -66,7 +66,7 @@ class Item
      * @param  string  $id
      * @param  string  $target
      * @param  string  $badgeClass
-     * @param  string  $badgeName
+     * @param  string|Closure  $badgeName
      * @param string array $gateName
      * @return Item
      */

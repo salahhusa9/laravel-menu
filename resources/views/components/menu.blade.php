@@ -13,7 +13,11 @@
 
                     @if ($item->badgeName)
                         <div class="{{ $menu->getConfig('badge_class') }} {{ $item->badgeClass }}">
-                            {{ $item->badgeName }}
+                            @if (is_callable($item->badgeName))
+                                {{ call_user_func($item->badgeName) }}
+                            @else
+                                {{ $item->badgeName }}
+                            @endif
                         </div>
                     @endif
                 </a>

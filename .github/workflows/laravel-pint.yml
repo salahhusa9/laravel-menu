@@ -10,7 +10,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: shivammathur/setup-php@d6560b1fbbf55bd076855f7ae33e8922596ff192
+      - uses: shivammathur/setup-php@fc14643b0a99ee9db10a3c025a33d76544fa3761
         with:
           php-version: '8.1'
       - uses: actions/checkout@v4

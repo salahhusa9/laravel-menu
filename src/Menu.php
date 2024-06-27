@@ -138,7 +138,7 @@ class Menu
      * @param  array  $options
      * @return \Salahhusa9\Menu\Menu
      */
-    public function addSubmenu($name, $callback, $options = [])
+    public function addSubmenu($name, $callback)
     {
         $item = new Item();
         $item->new(

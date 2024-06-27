@@ -57,7 +57,7 @@ class Item
     public $submenu = [];
 
     /**
-     * @var string array
+     * @var string|array
      */
     public $gateName = null;
 
@@ -133,7 +133,7 @@ class Item
         return $this;
     }
 
-    public function gate(string $gateName)
+    public function gate(...$gateName)
     {
         $this->gateName = $gateName;
 
@@ -237,7 +237,7 @@ class Item
      */
     public function isActive()
     {
-        if (request()->routeIs($this->routeName) or request()->url() == $this->url) {
+        if (request()->routeIs($this->routeName) or request()->fullUrl() == $this->url) {
             return true;
         } else { // check child routes
             return $this->hasActiveSubmenu(

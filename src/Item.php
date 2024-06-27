@@ -248,7 +248,7 @@ class Item
             return 'javascript:void(0)';
         }
 
-        if (!is_null($this->url)) {
+        if (! is_null($this->url)) {
             return $this->url;
         }
 

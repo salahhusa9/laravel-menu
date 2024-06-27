@@ -142,20 +142,12 @@ class Menu
     {
         $item = new Item();
         $item->new(
-            $name,
-            null,
-            $options['icon'] ?? null,
-            $options['class'] ?? null,
-            $options['id'] ?? null,
-            $options['target'] ?? null,
-            $options['badgeClass'] ?? null,
-            $options['badgeName'] ?? null,
-            $options['gateName'] ?? null
+            $name
         );
         $item->addSubmenu($callback);
         $this->menu[] = $item;
 
-        return $this;
+        return $item;
     }
 
     /**

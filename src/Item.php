@@ -2,6 +2,7 @@
 
 namespace Salahhusa9\Menu;
 
+use Closure;
 use Salahhusa9\Menu\Facades\Menu as FacadesMenu;
 
 class Item
@@ -15,6 +16,8 @@ class Item
      * @var string|null
      */
     public $routeName;
+
+    protected array $routeData = [];
 
     public $url;
 
@@ -73,10 +76,52 @@ class Item
      * @return Item
      */
     public function new(
-        $name
+        string $name
     ) {
         $this->name = $name;
 
+        return $this;
+    }
+
+    public function route(string $name, array $data = []) {
+        $this->routeName = $name;
+        $this->routeData = $data;
+        return $this;
+    }
+
+    public function url(string $url) {
+        $this->url = $url;
+        return $this;
+    }
+
+    public function icon(string $icon) {
+        $this->icon = $icon;
+        return $this;
+    }
+
+    public function class(string $class) {
+        $this->class = $class;
+        return $this;
+    }
+
+    public function id(string $id) {
+        $this->id = $id;
+        return $this;
+    }
+
+    public function target(string $target) {
+        $this->target = $target;
+        return $this;
+    }
+
+    public function badge(string $badgeClass, string|Closure $badgeName) {
+        $this->badgeClass = $badgeClass;
+        $this->badgeName = $badgeName;
+        return $this;
+    }
+
+    public function gate(string $gateName) {
+        $this->gateName = $gateName;
         return $this;
     }
 
@@ -248,7 +293,7 @@ class Item
             return 'javascript:void(0)';
         }
 
-        if (!is_null($this->url)) {
+        if (! is_null($this->url)) {
             return $this->url;
         }
 

@@ -2,6 +2,7 @@
 
 namespace Salahhusa9\Menu;
 
+use Closure;
 use Salahhusa9\Menu\Facades\Menu as FacadesMenu;
 
 class Item
@@ -15,6 +16,10 @@ class Item
      * @var string|null
      */
     public $routeName;
+
+    protected array $routeData = [];
+
+    public $url;
 
     /**
      * @var string
@@ -52,14 +57,13 @@ class Item
     public $submenu = [];
 
     /**
-     * @var string array
+     * @var string|array
      */
     public $gateName = null;
 
     /**
      * Add a new item to the menu
      *
-     * @param  string  $name
      * @param  string  $routeName
      * @param  string  $icon
      * @param  string  $class
@@ -71,24 +75,66 @@ class Item
      * @return Item
      */
     public function new(
-        $name,
-        $routeName = null,
-        $icon = null,
-        $class = null,
-        $id = null,
-        $target = null,
-        $badgeClass = null,
-        $badgeName = null,
-        $gateName = null
+        string $name
     ) {
         $this->name = $name;
-        $this->routeName = $routeName;
+
+        return $this;
+    }
+
+    public function route(string $name, array $data = [])
+    {
+        $this->routeName = $name;
+        $this->routeData = $data;
+
+        return $this;
+    }
+
+    public function url(string $url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    public function icon(string $icon)
+    {
         $this->icon = $icon;
+
+        return $this;
+    }
+
+    public function class(string $class)
+    {
         $this->class = $class;
+
+        return $this;
+    }
+
+    public function id(string $id)
+    {
         $this->id = $id;
+
+        return $this;
+    }
+
+    public function target(string $target)
+    {
         $this->target = $target;
+
+        return $this;
+    }
+
+    public function badge(string $badgeClass, string|Closure $badgeName)
+    {
         $this->badgeClass = $badgeClass;
         $this->badgeName = $badgeName;
+
+        return $this;
+    }
+
+    public function gate(...$gateName)
+    {
         $this->gateName = $gateName;
 
         return $this;
@@ -191,7 +237,7 @@ class Item
      */
     public function isActive()
     {
-        if (request()->routeIs($this->routeName)) {
+        if (request()->routeIs($this->routeName) or request()->fullUrl() == $this->url) {
             return true;
         } else { // check child routes
             return $this->hasActiveSubmenu(
@@ -258,8 +304,12 @@ class Item
      */
     public function getUrl()
     {
-        if (is_null($this->routeName)) {
+        if (is_null($this->routeName) and is_null($this->url)) {
             return 'javascript:void(0)';
+        }
+
+        if (! is_null($this->url)) {
+            return $this->url;
         }
 
         return route($this->routeName);

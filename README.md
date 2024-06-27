@@ -38,26 +38,20 @@ use SalahHusa9\Menu\Facades\Menu;
 
 public function boot()
 {
-    Menu::add('test', 'route.name', 'fa fa-home');
+    Menu::addItem('test')->route('route.name'); // you can use route name with parameters
+    // or
+    Menu::addItem('test')->url('url'); // you can use url with target
 }
 ```
 
-Add items to the menu using the add() method. You can chain multiple add() calls to add multiple items.
+To create a submenu, call addSubmenu() on a menu item and add items to the submenu using the addItem() method.
 
 ```php
-Menu::add('test')
-    ->add('test2');
-```
-
-To create a submenu, call addSubmenu() on a menu item and add items to the submenu using the add() method.
-
-```php
-Menu::add('test')
-    ->add('test2')
-    ->addSubmenu('test3', function ($submenu) {
-        $submenu->add('test4');
-    })
-    ->add('test5');
+Menu::
+    ->addSubmenu('test1.0', function ($submenu) {
+        $submenu->addItem('test1.1')->route('test', ['id' => 1]);
+        $submenu->addItem('test1.2')->route('test', ['id' => 2]);
+    });
 ```
 
 ### Blade
@@ -70,28 +64,28 @@ To render the menu, use the `<x-menu />` blade component.
 
 ### Customization of the menu
 
-Icons can be added to the menu items by passing the icon parameter to the add() method.
+Icons can be added to the menu items by passing the icon parameter to the addItem() method.
 
 ```php
-Menu::add('test', 'route.name', ['icon' => 'fa fa-home']);
+Menu::addItem('test')->route('route.name')->icon('icon-class');
 ```
 
-You can also add a id and class to the menu item by passing the id and class parameters to the add() method.
+You can also add a id and class to the menu item by passing the id and class parameters to the addItem() method.
 
 ```php
-Menu::add('test', 'route.name',['class' => 'customClass', 'id' => 'customId']);
+Menu::addItem('test')->route('route.name')->class('class-name')->id('id-name');
 ```
 
-You can also add a target to the menu item by passing the target parameter to the add() method.
+You can also add a target to the menu item by passing the target parameter to the addItem() method.
 
 ```php
-Menu::add('test', 'route.name', ['target' => '_blank']);
+Menu::addItem('test')->route('route.name')->target('_blank');
 ```
 
-You can also add a badge to the menu item by passing the badgeClass and badgeName parameters to the add() method.
+You can also add a badge to the menu item by passing the badgeClass and badgeName parameters to the addItem() method.
 
 ```php
-Menu::add('test', 'route.name', ['badgeClass' => 'badge badge-success', 'badgeName' => 'New']);
+Menu::addItem('test')->route('route.name')->badge('badge badge-success', 'New');
 ```
 
 You can also
@@ -99,10 +93,10 @@ You can also
 ```php
 // old:
 if (auth()->user()->can('gateName')){
-    Menu::add('test', 'route.name');
+    Menu::addItem('test', 'route.name');
 }
 // new:
-Menu::add('test', 'route.name', ['gateName' => 'gateName']);
+Menu::addItem('test')->route('route.name')->gate('gateName');
 ```
 
 ### Customization of the menu view
@@ -119,11 +113,13 @@ You can create multiple menus in your application:
 
 ```php
     Menu::make('sidebar', function ($menu) {
-        $menu->add('test', 'route.name');
+        $menu->addItem('test', 'route.name');
+        $menu->addItem('test')->route('route.name')
     });
 
     Menu::make('main', function ($menu) {
-        $menu->add('test', 'route.name');
+        $menu->addItem('test', 'route.name');
+        $menu->addItem('test')->route('route.name')
     });
 ```
 
@@ -165,7 +161,7 @@ return [
 Each Item accept this parames :
 
 ```php
-add(
+addItem(
     $name,
     $routeName = null,
     $options = [],

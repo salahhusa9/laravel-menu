@@ -64,7 +64,6 @@ class Item
     /**
      * Add a new item to the menu
      *
-     * @param  string  $name
      * @param  string  $routeName
      * @param  string  $icon
      * @param  string  $class
@@ -83,45 +82,61 @@ class Item
         return $this;
     }
 
-    public function route(string $name, array $data = []) {
+    public function route(string $name, array $data = [])
+    {
         $this->routeName = $name;
         $this->routeData = $data;
+
         return $this;
     }
 
-    public function url(string $url) {
+    public function url(string $url)
+    {
         $this->url = $url;
+
         return $this;
     }
 
-    public function icon(string $icon) {
+    public function icon(string $icon)
+    {
         $this->icon = $icon;
+
         return $this;
     }
 
-    public function class(string $class) {
+    public function class(string $class)
+    {
         $this->class = $class;
+
         return $this;
     }
 
-    public function id(string $id) {
+    public function id(string $id)
+    {
         $this->id = $id;
+
         return $this;
     }
 
-    public function target(string $target) {
+    public function target(string $target)
+    {
         $this->target = $target;
+
         return $this;
     }
 
-    public function badge(string $badgeClass, string|Closure $badgeName) {
+    public function badge(string $badgeClass, string|Closure $badgeName)
+    {
         $this->badgeClass = $badgeClass;
         $this->badgeName = $badgeName;
+
         return $this;
     }
 
-    public function gate(string $gateName) {
+    public function gate(string $gateName)
+    {
         $this->gateName = $gateName;
+
         return $this;
     }
 

@@ -111,37 +111,6 @@ class Menu
     }
 
     /**
-     * Add a new item to the menu
-     *
-     * @param  string  $name
-     * @param  string  $routeName
-     * @param  array  $options
-     * @return \Salahhusa9\Menu\Menu
-     */
-    public function add(
-        $name,
-        $routeName = null,
-        $options = [],
-    ) {
-        $item = new Item();
-        $item->new(
-            $name,
-            $routeName,
-            $options['icon'] ?? null,
-            $options['class'] ?? null,
-            $options['id'] ?? null,
-            $options['target'] ?? null,
-            $options['badgeClass'] ?? null,
-            $options['badgeName'] ?? null,
-            $options['gateName'] ?? null
-        );
-
-        $this->menu[] = $item;
-
-        return $this;
-    }
-
-    /**
      * addItem
      *
      * @param  string  $name
@@ -150,21 +119,11 @@ class Menu
      * @return \Salahhusa9\Menu\Item
      */
     public function addItem(
-        $name,
-        $routeName = null,
-        $options = [],
+        $name
     ) {
         $item = new Item();
         $item->new(
-            $name,
-            $routeName,
-            $options['icon'] ?? null,
-            $options['class'] ?? null,
-            $options['id'] ?? null,
-            $options['target'] ?? null,
-            $options['badgeClass'] ?? null,
-            $options['badgeName'] ?? null,
-            $options['gateName'] ?? null
+            $name
         );
         $this->menu[] = $item;
 

@@ -16,6 +16,8 @@ class Item
      */
     public $routeName;
 
+    public $url;
+
     /**
      * @var string
      */
@@ -71,25 +73,9 @@ class Item
      * @return Item
      */
     public function new(
-        $name,
-        $routeName = null,
-        $icon = null,
-        $class = null,
-        $id = null,
-        $target = null,
-        $badgeClass = null,
-        $badgeName = null,
-        $gateName = null
+        $name
     ) {
         $this->name = $name;
-        $this->routeName = $routeName;
-        $this->icon = $icon;
-        $this->class = $class;
-        $this->id = $id;
-        $this->target = $target;
-        $this->badgeClass = $badgeClass;
-        $this->badgeName = $badgeName;
-        $this->gateName = $gateName;
 
         return $this;
     }
@@ -191,7 +177,7 @@ class Item
      */
     public function isActive()
     {
-        if (request()->routeIs($this->routeName)) {
+        if (request()->routeIs($this->routeName) or request()->url() == $this->url) {
             return true;
         } else { // check child routes
             return $this->hasActiveSubmenu(
@@ -258,8 +244,12 @@ class Item
      */
     public function getUrl()
     {
-        if (is_null($this->routeName)) {
+        if (is_null($this->routeName) and is_null($this->url)) {
             return 'javascript:void(0)';
+        }
+
+        if (!is_null($this->url)) {
+            return $this->url;
         }
 
         return route($this->routeName);

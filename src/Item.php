@@ -101,7 +101,7 @@ class Item
      */
     public function addSubmenu($callback)
     {
-        $menu = new Menu();
+        $menu = new Menu;
         $callback($menu);
         $this->submenu = $menu->getMenu();
 
@@ -292,7 +292,7 @@ class Item
      */
     public function getSubmenu()
     {
-        $menu = new Menu();
+        $menu = new Menu;
         $menu->setIsSubmenu();
         $menu->setMenu($this->submenu);
 

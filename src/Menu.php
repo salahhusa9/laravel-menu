@@ -103,7 +103,7 @@ class Menu
      */
     public function make($for, $callback)
     {
-        $menu = new Menu();
+        $menu = new Menu;
         $callback($menu);
         $this->menu[$for] = $menu;
 
@@ -123,7 +123,7 @@ class Menu
         $routeName = null,
         $options = [],
     ) {
-        $item = new Item();
+        $item = new Item;
         $item->new(
             $name,
             $routeName,
@@ -154,7 +154,7 @@ class Menu
         $routeName = null,
         $options = [],
     ) {
-        $item = new Item();
+        $item = new Item;
         $item->new(
             $name,
             $routeName,
@@ -181,7 +181,7 @@ class Menu
      */
     public function addSubmenu($name, $callback, $options = [])
     {
-        $item = new Item();
+        $item = new Item;
         $item->new(
             $name,
             null,

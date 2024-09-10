@@ -103,7 +103,7 @@ class Menu
      */
     public function make($for, $callback)
     {
-        $menu = new Menu();
+        $menu = new Menu;
         $callback($menu);
         $this->menu[$for] = $menu;
 
@@ -121,7 +121,7 @@ class Menu
     public function addItem(
         $name
     ) {
-        $item = new Item();
+        $item = new Item;
         $item->new(
             $name
         );
@@ -140,7 +140,7 @@ class Menu
      */
     public function addSubmenu($name, $callback)
     {
-        $item = new Item();
+        $item = new Item;
         $item->new(
             $name
         );

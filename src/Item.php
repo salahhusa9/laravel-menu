@@ -237,7 +237,7 @@ class Item
      */
     public function isActive()
     {
-        if (request()->routeIs($this->routeName) or request()->fullUrl() == $this->url) {
+        if (request()->routeIs($this->routeName) or request()->fullUrlIs($this->url)) {
             return true;
         } else { // check child routes
             return $this->hasActiveSubmenu(
